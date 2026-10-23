@@ -6,18 +6,25 @@ This repository is intentionally simple: static HTML/CSS/JS, mock data, and comp
 
 ## Structure
 
+- `AGENTS.md` — rules for AI-assisted edits and safe session recovery.
+- `CONTEXT.md` — stable project bootstrap context.
+- `CURRENT.md` — compact current work state.
 - `rules/` — current business truth used by the wireframes.
 - `prototype/` — clickable visual prototype.
-- `AGENTS.md` — rules for AI-assisted edits.
 - `VERSION` — human-readable prototype checkpoint version.
+
+## Restore in a new chat
+
+Read `AGENTS.md`, then `CONTEXT.md`, then `CURRENT.md`. After that, load only the rule and prototype files required for the current task.
 
 ## Workflow
 
 1. Discuss a product or UX rule.
 2. Update the relevant file in `rules/` if the business truth changed.
-3. Change only the necessary prototype files.
-4. Commit the meaningful iteration separately.
-5. Review the prototype visually.
-6. If an iteration is bad, restore the previous Git commit instead of reconstructing it from memory.
+3. Update `CURRENT.md` when the active work area or task changes materially.
+4. Change only the necessary prototype files.
+5. Commit the meaningful iteration separately.
+6. Review the prototype visually.
+7. If an iteration is bad, restore the previous Git commit instead of reconstructing it from memory.
 
-Git history is the version history. Markdown files contain only the current truth, not a running diary of old decisions.
+Git history is the version history. Markdown files contain only current truth/current state, not a running diary of old decisions.
