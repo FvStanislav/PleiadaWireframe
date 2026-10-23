@@ -50,6 +50,14 @@ Do not load the entire repository by default. Use the minimum context required f
 - Never squash, rewrite or destroy previous prototype history.
 - If an iteration is wrong, restore from Git rather than reconstructing the previous state from memory.
 
+## Live preview
+
+- `prototype/` is published to GitHub Pages by `.github/workflows/pages.yml`.
+- Expected preview URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
+- Prototype changes on `main` should deploy automatically after Pages is enabled once in repository settings.
+- If deployment fails, inspect the GitHub Actions run before changing prototype code. Do not treat a Pages configuration failure as a UI/code failure.
+- See `PREVIEW.md` for deployment-specific details.
+
 ## Versions
 
 - Git commits are the primary rollback points.
@@ -60,6 +68,7 @@ Do not load the entire repository by default. Use the minimum context required f
 
 - `CONTEXT.md` — stable bootstrap context for the project.
 - `CURRENT.md` — compact current work state for session recovery.
+- `PREVIEW.md` — GitHub Pages preview setup and URL.
 - `rules/` — business rules currently in force.
 - `prototype/index.html` — prototype markup.
 - `prototype/styles.css` — prototype styles.
