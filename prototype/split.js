@@ -74,11 +74,17 @@ function renderSplitPlacementCard(placement) {
           <div class="media-card-kicker">${placement.type}</div>
           <h3>${placement.name}</h3>
         </div>
-        <button
-          class="split-toggle ${isAdded ? "is-added" : ""}"
-          data-placement-id="${placement.id}"
-          aria-pressed="${isAdded}"
-        >${isAdded ? "Добавлено в сплит" : "Добавить в сплит"}</button>
+        <div class="media-card-actions">
+          <div class="media-price">
+            <span>Цена:</span>
+            <strong>${formatNumber(placement.price)} ₽</strong>
+          </div>
+          <button
+            class="split-toggle ${isAdded ? "is-added" : ""}"
+            data-placement-id="${placement.id}"
+            aria-pressed="${isAdded}"
+          >${isAdded ? "Добавлено в сплит" : "Добавить в сплит"}</button>
+        </div>
       </div>
 
       <div class="media-metrics">
@@ -164,6 +170,11 @@ renderCampaignCreateStep3 = function () {
         <span>3</span>
         <strong>Сплит</strong>
       </div>
+      <div class="wizard-progress-line"></div>
+      <div class="wizard-progress-item future">
+        <span>4</span>
+        <strong>Загрузка креатива</strong>
+      </div>
     </div>
 
     <div class="split-budget-grid">
@@ -240,6 +251,51 @@ function renderCampaignCreateStep4() {
         <button class="back-button" id="exit-campaign-create">← Рекламные кампании</button>
         <h1>Создание рекламной кампании</h1>
       </div>
+      <div class="wizard-step">Шаг 4</div>
+    </div>
+
+    <div class="wizard-progress">
+      <div class="wizard-progress-item complete"><span>1</span><strong>Параметры РК</strong></div>
+      <div class="wizard-progress-line complete"></div>
+      <div class="wizard-progress-item complete"><span>2</span><strong>Подбор медиа</strong></div>
+      <div class="wizard-progress-line complete"></div>
+      <div class="wizard-progress-item complete"><span>3</span><strong>Сплит</strong></div>
+      <div class="wizard-progress-line complete"></div>
+      <div class="wizard-progress-item active"><span>4</span><strong>Загрузка креатива</strong></div>
+    </div>
+
+    <section class="panel creative-upload-panel">
+      <div class="creative-upload-header">
+        <h2>Загрузка креатива</h2>
+        <p>Добавьте файл креатива для рекламной кампании.</p>
+      </div>
+
+      <div class="creative-drop-zone">
+        <div class="creative-upload-icon">↑</div>
+        <strong>Перетащите файл сюда</strong>
+        <span>или</span>
+        <button type="button" class="secondary-button">Выбрать файл</button>
+      </div>
+    </section>
+
+    <div class="wizard-actions">
+      <button class="secondary-button" id="campaign-back-step3">Назад</button>
+      <button class="primary-button" id="campaign-next-step5">Далее</button>
+    </div>
+  `;
+
+  document.querySelector("#exit-campaign-create").addEventListener("click", () => render("campaigns"));
+  document.querySelector("#campaign-back-step3").addEventListener("click", () => render("campaign-create-step3"));
+  document.querySelector("#campaign-next-step5").addEventListener("click", renderCampaignCreateStep5);
+}
+
+function renderCampaignCreateStep5() {
+  screen.innerHTML = `
+    <div class="wizard-header">
+      <div>
+        <button class="back-button" id="exit-campaign-create">← Рекламные кампании</button>
+        <h1>Создание рекламной кампании</h1>
+      </div>
       <div class="wizard-step">Следующий шаг</div>
     </div>
 
@@ -249,6 +305,8 @@ function renderCampaignCreateStep4() {
       <div class="wizard-progress-item complete"><span>2</span><strong>Подбор медиа</strong></div>
       <div class="wizard-progress-line complete"></div>
       <div class="wizard-progress-item complete"><span>3</span><strong>Сплит</strong></div>
+      <div class="wizard-progress-line complete"></div>
+      <div class="wizard-progress-item complete"><span>4</span><strong>Загрузка креатива</strong></div>
     </div>
 
     <div class="panel placeholder">
@@ -257,10 +315,10 @@ function renderCampaignCreateStep4() {
     </div>
 
     <div class="wizard-actions">
-      <button class="secondary-button" id="campaign-back-step3">Назад</button>
+      <button class="secondary-button" id="campaign-back-step4">Назад</button>
     </div>
   `;
 
   document.querySelector("#exit-campaign-create").addEventListener("click", () => render("campaigns"));
-  document.querySelector("#campaign-back-step3").addEventListener("click", () => render("campaign-create-step3"));
+  document.querySelector("#campaign-back-step4").addEventListener("click", renderCampaignCreateStep4);
 }

@@ -18,6 +18,8 @@
 - `BR-CAM-014` — **Назад** from step 2 returns to step 1 while preserving the current in-session prototype state.
 - `BR-CAM-015` — Step 3 is **Сплит**. Its placement-card content and inclusion behavior are defined in `rules/placements.md`.
 - `BR-CAM-016` — **Назад** from step 3 returns to step 2 while preserving the current in-session prototype state.
-- `BR-CAM-017` — Later creation steps remain unspecified until explicitly defined.
+- `BR-CAM-017` — Step 4 is **Загрузка креатива**. Its upload interface is defined in `rules/creatives.md`.
+- `BR-CAM-018` — **Назад** from step 4 returns to step 3.
+- `BR-CAM-019` — Later creation steps remain unspecified until explicitly defined.
 
-Steps 1–3 are currently defined. The prototype may show a placeholder after step 3 solely to preserve **Далее / Назад** navigation.
+Steps 1–4 are currently defined. The prototype may show a placeholder after step 4 solely to preserve **Далее / Назад** navigation.
