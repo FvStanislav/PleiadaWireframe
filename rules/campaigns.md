@@ -16,6 +16,8 @@
 - `BR-CAM-012` — Changing **Формат контента** resets the selected platform, placement formats and additional options because their available values depend on the content format.
 - `BR-CAM-013` — Step 2 is **Подбор медиа**. Its media-selection fields and constraints are defined in `rules/media.md`.
 - `BR-CAM-014` — **Назад** from step 2 returns to step 1 while preserving the current in-session prototype state.
-- `BR-CAM-015` — Later creation steps remain unspecified until explicitly defined.
+- `BR-CAM-015` — Step 3 is **Сплит**. Its placement-card content and inclusion behavior are defined in `rules/placements.md`.
+- `BR-CAM-016` — **Назад** from step 3 returns to step 2 while preserving the current in-session prototype state.
+- `BR-CAM-017` — Later creation steps remain unspecified until explicitly defined.
 
-Only steps 1 and 2 are currently defined. The prototype may show a placeholder after step 2 solely to preserve **Далее / Назад** navigation.
+Steps 1–3 are currently defined. The prototype may show a placeholder after step 3 solely to preserve **Далее / Назад** navigation.
