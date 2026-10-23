@@ -4,22 +4,28 @@ Prototype version: `0.1.0`
 
 ## Current area
 
-Initial scaffold. No product area is currently being actively designed.
+Global navigation / top-level product structure.
 
 ## Current task
 
-None. The repository is prepared for the first real wireframe task.
+Top-level navigation has been defined and implemented as a clickable wireframe.
 
 ## Last accepted state
 
-- Repository structure created.
-- Business-rule containers created but not yet populated with detailed product truth.
-- Minimal static HTML/CSS/JS prototype scaffold created.
-- Context restoration workflow added.
+- Five top-level sections are defined: Рекламные кампании, Отчеты, Профиль и организации, Платежи и документы, Помощь.
+- Each section is represented by a large clickable menu item.
+- Clicking a menu item opens a simple placeholder page for that section.
+- Рекламные кампании is the default landing section.
+- Detailed internal structure of the sections has not yet been designed.
 
 ## Read for current work
 
-For a new task, first read `AGENTS.md` and `CONTEXT.md`, then choose only the relevant files from `rules/` based on the user's request.
+- `rules/common.md`
+- `prototype/index.html`
+- `prototype/styles.css`
+- `prototype/app.js`
+
+Read additional `rules/*.md` only when the next task requires them.
 
 ## Prototype entry
 

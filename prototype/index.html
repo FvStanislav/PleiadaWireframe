@@ -17,10 +17,32 @@
 
   <main class="shell">
     <aside class="sidebar">
-      <button class="nav-item active" data-screen="home">Обзор</button>
-      <button class="nav-item" data-screen="campaigns">Кампании</button>
-      <button class="nav-item" data-screen="contracts">Контракты</button>
-      <button class="nav-item" data-screen="media">Медиа</button>
+      <div class="sidebar-title">Разделы</div>
+
+      <button class="nav-item active" data-screen="campaigns">
+        <span class="nav-title">Рекламные кампании</span>
+        <span class="nav-description">Основной список РК</span>
+      </button>
+
+      <button class="nav-item" data-screen="reports">
+        <span class="nav-title">Отчеты</span>
+        <span class="nav-description">Формирование кастомных отчетов</span>
+      </button>
+
+      <button class="nav-item" data-screen="profile">
+        <span class="nav-title">Профиль и организации</span>
+        <span class="nav-description">Личные данные и данные юридических лиц</span>
+      </button>
+
+      <button class="nav-item" data-screen="billing">
+        <span class="nav-title">Платежи и документы</span>
+        <span class="nav-description">Юридические документы и расчеты</span>
+      </button>
+
+      <button class="nav-item" data-screen="help">
+        <span class="nav-title">Помощь</span>
+        <span class="nav-description">Документация и поддержка</span>
+      </button>
     </aside>
 
     <section class="content" id="screen"></section>
