@@ -21,9 +21,9 @@ The top-level navigation now includes client context, and the advertising campai
 - The creation page currently contains only a placeholder; its fields and steps are not yet defined.
 - The campaign menu item remains active while viewing campaign creation.
 - Detailed internal structure of the other sections has not yet been designed.
-- GitHub Pages is active and publishes `main` through the built-in Pages deployment.
-- Wireframe preview URL: `https://fvstanislav.github.io/PleiadaWireframe/prototype/`.
-- No manual Actions run is required for normal prototype updates.
+- GitHub Pages publishes `prototype/` through `.github/workflows/pages.yml`.
+- Wireframe preview URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
+- Prototype changes on `main` deploy automatically; no manual Actions run is required.
 
 ## Read for current work
 
