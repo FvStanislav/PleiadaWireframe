@@ -8,7 +8,7 @@ Advertising campaign creation flow.
 
 ## Current task
 
-Campaign creation steps 1 and 2 are defined. Step 2 is **Подбор медиа** with audience/media filters.
+Campaign creation steps 1–3 are defined. Step 3 is **Сплит** with budget summary and recommended media cards.
 
 ## Last accepted state
 
@@ -19,13 +19,15 @@ Campaign creation steps 1 and 2 are defined. Step 2 is **Подбор медиа
 - **Создать** opens a multi-step **Создание рекламной кампании** flow.
 - Step 1 is **Параметры РК** and contains: Название, Формат контента, Платформа, Форматы размещения, Дополнительные опции, Бюджет, Даты проведения.
 - Step 2 is **Подбор медиа** and contains: Тематика, Подписчиков, Просмотров на ролик, Охват, ER, ERR, География, Пол, Возраст.
-- Тематика and Пол are multi-select fields.
-- Subscriber, views, reach and age filters are numeric min/max ranges.
-- ER and ERR are percentage min/max ranges with 0.01 step.
-- География is a hierarchical multi-select: Россия → Москва, Пермь; Китай → Пекин, Шанхай.
-- Selecting or clearing a country automatically selects or clears all cities under it; partial city selection shows an indeterminate country state.
-- **Назад** from step 2 returns to step 1 with current in-session state preserved.
-- **Далее** from step 2 opens only a placeholder because later steps are not yet defined.
+- Step 3 is **Сплит**.
+- Step 3 shows separate planned and preliminary budget values.
+- Recommended placements are displayed as cards under **Подобрали для вас размещения**.
+- The current mock card is **Канал 1** with subscribers, views, reach, ER, ERR, publications per month, gender ratio and an age-distribution mini chart.
+- A placement included in the split has green **Добавлено в сплит** state; clicking toggles it to black **Добавить в сплит**, and clicking again restores the included state.
+- Split budget values do not currently recalculate when placement inclusion changes because no recalculation rule has been defined.
+- Mock demographic distribution values exist only to visualize the card and are not business rules.
+- **Назад** from step 3 returns to step 2 with current in-session state preserved.
+- **Далее** from step 3 opens only a placeholder because later steps are not yet defined.
 - The campaign menu item remains active throughout campaign creation.
 - GitHub Pages publishes `prototype/` through `.github/workflows/pages.yml`.
 - Wireframe preview URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
@@ -36,10 +38,13 @@ Campaign creation steps 1 and 2 are defined. Step 2 is **Подбор медиа
 - `rules/campaigns.md`
 - `rules/formats.md`
 - `rules/media.md`
+- `rules/placements.md`
 - `prototype/index.html`
 - `prototype/styles.css`
 - `prototype/app.js`
 - `prototype/mock-data.js`
+- `prototype/split.css`
+- `prototype/split.js`
 
 Read `PREVIEW.md` only for preview/deployment issues. Read additional `rules/*.md` only when the next task requires them.
 
