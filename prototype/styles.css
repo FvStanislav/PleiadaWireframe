@@ -34,6 +34,54 @@ button { font: inherit; }
   border-right: 1px solid #e4e7ec;
 }
 
+.account-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  margin-bottom: 24px;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  background: #fafbfc;
+}
+
+.account-avatar {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #1d2433;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.account-main { min-width: 0; }
+
+.account-name {
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-balance-label {
+  display: inline;
+  margin-right: 6px;
+  color: #8a91a0;
+  font-size: 12px;
+}
+
+.account-balance {
+  display: inline;
+  font-size: 13px;
+  font-weight: 650;
+}
+
 .sidebar-title {
   margin: 0 8px 12px;
   font-size: 12px;
@@ -84,9 +132,22 @@ button { font: inherit; }
   padding: 48px;
 }
 
+.page-header-row {
+  max-width: 900px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
 .page-header {
   max-width: 900px;
   margin-bottom: 24px;
+}
+
+.page-header-row .page-header {
+  margin-bottom: 0;
 }
 
 .page-header h1 {
@@ -100,6 +161,29 @@ button { font: inherit; }
   font-size: 16px;
   line-height: 1.5;
 }
+
+.primary-button {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: #16181d;
+  color: #fff;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.primary-button:hover { opacity: 0.88; }
+
+.back-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 20px;
+  color: #687083;
+  cursor: pointer;
+}
+
+.back-button:hover { color: #16181d; }
 
 .panel {
   max-width: 900px;
