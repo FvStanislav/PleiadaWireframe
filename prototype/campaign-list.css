@@ -1,0 +1,70 @@
+.campaign-list {
+  max-width: 900px;
+  display: grid;
+  gap: 14px;
+}
+
+.campaign-list-card {
+  padding: 22px;
+  border: 1px solid #dfe3ea;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.campaign-list-card:hover {
+  border-color: #cfd5df;
+  box-shadow: 0 8px 20px rgba(31, 36, 48, 0.06);
+}
+
+.campaign-list-card:focus-visible {
+  outline: 2px solid #cfd5df;
+  outline-offset: 2px;
+}
+
+.campaign-list-card-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.campaign-list-card-title {
+  margin-bottom: 16px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.campaign-list-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 30px;
+}
+
+.campaign-list-card-meta > div {
+  display: grid;
+  gap: 4px;
+}
+
+.campaign-list-card-meta span {
+  color: #747c8d;
+  font-size: 12px;
+}
+
+.campaign-list-card-meta strong {
+  font-size: 14px;
+}
+
+.campaign-list-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .campaign-list-card-main,
+  .campaign-list-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

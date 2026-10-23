@@ -8,7 +8,7 @@ Advertising campaign creation and management flow.
 
 ## Current task
 
-Campaign creation steps 1–4 are defined. After step 4 the wizard ends and opens a separate **Управление рекламной кампанией** page with expandable split/channel/placement hierarchy and an **Добавить сплит** action.
+Campaign creation steps 1–4 are defined. The **Рекламные кампании** list now contains a clickable existing campaign card that opens the separate management page with expandable split/channel/placement hierarchy.
 
 ## Last accepted state
 
@@ -16,6 +16,8 @@ Campaign creation steps 1–4 are defined. After step 4 the wizard ends and open
 - The navigation displays the current client's profile nickname and balance using mock data.
 - Рекламные кампании is the default landing section.
 - The Рекламные кампании page has a **Создать** button.
+- The campaign list contains **Рекламная кампания 1** as a clickable card with date range, budget and status **В работе**.
+- Clicking the campaign card or its **Перейти** button opens the campaign management page.
 - **Создать** opens a four-step **Создание рекламной кампании** wizard.
 - Step 1 is **Параметры РК** and contains: Название, Формат контента, Платформа, Форматы размещения, Дополнительные опции, Бюджет, Даты проведения.
 - Step 2 is **Подбор медиа** and contains: Тематика, Подписчиков, Просмотров на ролик, Охват, ER, ERR, География, Пол, Возраст.
@@ -23,7 +25,7 @@ Campaign creation steps 1–4 are defined. After step 4 the wizard ends and open
 - Split cards show subscribers, views, reach, ER, ERR, publications per month, gender ratio, age distribution, price and split inclusion toggle.
 - Step 4 is **Загрузка креатива** with a visual-only drag-and-drop area and **Выбрать файл** button.
 - **Далее** from step 4 exits the wizard and opens **Управление рекламной кампанией**; there is no step 5 in the creation wizard.
-- The management page title is **Управление рекламной кампанией** and the current mock subtitle is **Рекламная кампани 1**.
+- The management page title is **Управление рекламной кампанией** and the current mock subtitle is **Рекламная кампания 1**.
 - The management page has an **Добавить сплит** button that opens the same step-by-step creation flow again from step 1.
 - The management page displays expandable split cards.
 - Current mock **Сплит 1** shows a date range, **Размещений: 5 шт.**, budget **48 400 ₽**, and status **В работе**.
@@ -51,6 +53,8 @@ Campaign creation steps 1–4 are defined. After step 4 the wizard ends and open
 - `prototype/split.js`
 - `prototype/management.css`
 - `prototype/management.js`
+- `prototype/campaign-list.css`
+- `prototype/campaign-list.js`
 
 Read `PREVIEW.md` only for preview/deployment issues. Read additional `rules/*.md` only when the next task requires them.
 

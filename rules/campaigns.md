@@ -21,6 +21,8 @@
 - `BR-CAM-017` — Step 4 is **Загрузка креатива**. Its upload interface is defined in `rules/creatives.md`.
 - `BR-CAM-018` — **Назад** from step 4 returns to step 3.
 - `BR-CAM-019` — After step 4 the creation wizard ends and opens a separate **Управление рекламной кампанией** page; this page is not another wizard step.
+- `BR-CAM-024` — The campaign list displays campaigns as cards showing campaign name, date range, budget and current status.
+- `BR-CAM-025` — Clicking a campaign card or its **Перейти** action opens that campaign's **Управление рекламной кампанией** page.
 
 ## Campaign management
 
