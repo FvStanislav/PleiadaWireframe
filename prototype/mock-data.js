@@ -67,6 +67,33 @@ const mockData = {
         "Китай": ["Пекин", "Шанхай"]
       },
       gender: ["Мужской", "Женский"]
+    },
+    split: {
+      plannedBudget: 50000,
+      preliminaryBudget: 48400,
+      placements: [
+        {
+          id: "channel-1",
+          type: "Канал",
+          name: "Канал 1",
+          subscribers: 3000,
+          views: 23413,
+          reach: 15400,
+          er: 2,
+          err: 4,
+          publicationsPerMonth: 5,
+          gender: {
+            male: 55,
+            female: 45
+          },
+          age: [
+            { label: "18–24", count: 3080 },
+            { label: "25–34", count: 6160 },
+            { label: "35–44", count: 3850 },
+            { label: "45+", count: 2310 }
+          ]
+        }
+      ]
     }
   },
   campaigns: [],
