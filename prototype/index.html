@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pleiada Wireframe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <strong>Pleiada</strong>
+      <span class="muted">wireframe</span>
+    </div>
+    <span class="version" id="version">v0.1.0</span>
+  </header>
+
+  <main class="shell">
+    <aside class="sidebar">
+      <button class="nav-item active" data-screen="home">Обзор</button>
+      <button class="nav-item" data-screen="campaigns">Кампании</button>
+      <button class="nav-item" data-screen="contracts">Контракты</button>
+      <button class="nav-item" data-screen="media">Медиа</button>
+    </aside>
+
+    <section class="content" id="screen"></section>
+  </main>
+
+  <script src="mock-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
