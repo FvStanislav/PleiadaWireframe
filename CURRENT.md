@@ -17,6 +17,9 @@ Top-level navigation has been defined and implemented as a clickable wireframe.
 - Clicking a menu item opens a simple placeholder page for that section.
 - Рекламные кампании is the default landing section.
 - Detailed internal structure of the sections has not yet been designed.
+- Automatic GitHub Pages deployment from `prototype/` is configured in `.github/workflows/pages.yml`.
+- Expected preview URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
+- Pages still requires the one-time repository setting `Settings → Pages → Source: GitHub Actions` before the first successful deployment.
 
 ## Read for current work
 
@@ -25,7 +28,7 @@ Top-level navigation has been defined and implemented as a clickable wireframe.
 - `prototype/styles.css`
 - `prototype/app.js`
 
-Read additional `rules/*.md` only when the next task requires them.
+Read `PREVIEW.md` only for preview/deployment issues. Read additional `rules/*.md` only when the next task requires them.
 
 ## Prototype entry
 
