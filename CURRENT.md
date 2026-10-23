@@ -4,11 +4,11 @@ Prototype version: `0.1.0`
 
 ## Current area
 
-Advertising campaign creation flow.
+Advertising campaign creation and management flow.
 
 ## Current task
 
-Campaign creation steps 1–4 are defined. Step 3 is **Сплит** with selected placements plus a searchable/sortable **Могут подойти** section; step 4 is **Загрузка креатива**.
+Campaign creation steps 1–4 are defined. After step 4 the wizard ends and opens a separate **Управление рекламной кампанией** page with expandable split/channel hierarchy.
 
 ## Last accepted state
 
@@ -16,25 +16,19 @@ Campaign creation steps 1–4 are defined. Step 3 is **Сплит** with selecte
 - The navigation displays the current client's profile nickname and balance using mock data.
 - Рекламные кампании is the default landing section.
 - The Рекламные кампании page has a **Создать** button.
-- **Создать** opens a multi-step **Создание рекламной кампании** flow.
+- **Создать** opens a four-step **Создание рекламной кампании** wizard.
 - Step 1 is **Параметры РК** and contains: Название, Формат контента, Платформа, Форматы размещения, Дополнительные опции, Бюджет, Даты проведения.
 - Step 2 is **Подбор медиа** and contains: Тематика, Подписчиков, Просмотров на ролик, Охват, ER, ERR, География, Пол, Возраст.
-- Step 3 is **Сплит**.
-- Step 3 shows separate planned and preliminary budget values.
-- **Подобрали для вас размещения** currently contains two mock channel cards that start in **Добавлено в сплит** state.
-- A media card shows subscribers, views, reach, ER, ERR, publications per month, gender ratio, an age-distribution mini chart and a ruble price placed immediately to the left of the split button.
-- The split toggle switches between green **Добавлено в сплит** and black **Добавить в сплит**.
-- **Могут подойти** contains three additional mock channel cards that start outside the split with **Добавить в сплит**.
-- **Могут подойти** has working name search and ordering by relevance, subscribers, views or price.
-- Step 2 filter matching is not calculated in the prototype; the suggested list is fixed mock data.
-- Split budget values do not currently recalculate when placement inclusion changes because no recalculation rule has been defined.
-- Mock demographic distribution, relevance and price values exist only to visualize and sort the cards and are not business rules.
-- Step 4 is **Загрузка креатива**.
-- Step 4 contains a visual drag-and-drop upload area with a **Выбрать файл** button.
-- File selection and drag-and-drop are intentionally non-functional in the wireframe; file requirements and validation are not yet defined.
-- **Назад** from step 4 returns to step 3.
-- **Далее** from step 4 opens only a placeholder because later steps are not yet defined.
-- The campaign menu item remains active throughout campaign creation.
+- Step 3 is **Сплит** with planned/preliminary budget, two selected mock channel cards, and a searchable/sortable **Могут подойти** section with three additional mock channel cards.
+- Split cards show subscribers, views, reach, ER, ERR, publications per month, gender ratio, age distribution, price and split inclusion toggle.
+- Step 4 is **Загрузка креатива** with a visual-only drag-and-drop area and **Выбрать файл** button.
+- **Далее** from step 4 exits the wizard and opens **Управление рекламной кампанией**; there is no step 5 in the creation wizard.
+- The management page title is **Управление рекламной кампанией** and the current mock subtitle is **Рекламная кампани 1**.
+- The management page displays expandable split cards.
+- Current mock **Сплит 1** shows a date range, **Размещений: 5 шт.**, and status **В работе**.
+- Expanding **Сплит 1** shows **Канал 1** with status **Отменен** and nested **Размещение 1**, plus **Канал 2** with status **Заявка не отправлена** and nested **Размещение 2**.
+- Only explicitly supplied nested placements are shown; the prototype does not invent additional placements to reconcile the split summary count.
+- The campaign menu item remains active throughout campaign creation and campaign management.
 - GitHub Pages publishes `prototype/` through `.github/workflows/pages.yml`.
 - Wireframe preview URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
 - Prototype changes on `main` deploy automatically; no manual Actions run is required.
@@ -52,6 +46,8 @@ Campaign creation steps 1–4 are defined. Step 3 is **Сплит** with selecte
 - `prototype/mock-data.js`
 - `prototype/split.css`
 - `prototype/split.js`
+- `prototype/management.css`
+- `prototype/management.js`
 
 Read `PREVIEW.md` only for preview/deployment issues. Read additional `rules/*.md` only when the next task requires them.
 

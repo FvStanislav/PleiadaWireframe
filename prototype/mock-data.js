@@ -177,6 +177,33 @@ const mockData = {
       ]
     }
   },
+  campaignManagement: {
+    title: "Управление рекламной кампанией",
+    subtitle: "Рекламная кампани 1",
+    splits: [
+      {
+        id: "split-1",
+        name: "Сплит 1",
+        dateRange: "01.11.2026 — 30.11.2026",
+        placementCount: 5,
+        status: "В работе",
+        channels: [
+          {
+            id: "management-channel-1",
+            name: "Канал 1",
+            status: "Отменен",
+            placements: ["Размещение 1"]
+          },
+          {
+            id: "management-channel-2",
+            name: "Канал 2",
+            status: "Заявка не отправлена",
+            placements: ["Размещение 2"]
+          }
+        ]
+      }
+    ]
+  },
   campaigns: [],
   contracts: [],
   media: []

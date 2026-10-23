@@ -20,6 +20,12 @@
 - `BR-CAM-016` — **Назад** from step 3 returns to step 2 while preserving the current in-session prototype state.
 - `BR-CAM-017` — Step 4 is **Загрузка креатива**. Its upload interface is defined in `rules/creatives.md`.
 - `BR-CAM-018` — **Назад** from step 4 returns to step 3.
-- `BR-CAM-019` — Later creation steps remain unspecified until explicitly defined.
+- `BR-CAM-019` — After step 4 the creation wizard ends and opens a separate **Управление рекламной кампанией** page; this page is not another wizard step.
 
-Steps 1–4 are currently defined. The prototype may show a placeholder after step 4 solely to preserve **Далее / Назад** navigation.
+## Campaign management
+
+- `BR-CAM-020` — **Управление рекламной кампанией** displays the campaign name/subtitle and a list of campaign splits.
+- `BR-CAM-021` — Each split is represented by an expandable card showing split name, placement date range, placement count and current split status.
+- `BR-CAM-022` — Expanding a split reveals its channels; each channel shows its own status and can reveal its nested placements.
+
+Steps 1–4 are the complete campaign-creation wizard currently defined. Campaign management begins after the wizard.

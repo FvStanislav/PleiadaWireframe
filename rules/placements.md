@@ -15,4 +15,10 @@
 - `BR-PLC-011` — Suggested media cards start outside the split with black **Добавить в сплит** state.
 - `BR-PLC-012` — No budget recalculation rule is defined yet for adding or removing placements; the prototype budget values remain informational until that behavior is specified.
 
-Specific channel names, demographic distributions, relevance values, prices and budget numbers shown in the prototype are mock fixture data unless separately defined as business rules.
+## Campaign management hierarchy
+
+- `BR-PLC-013` — A campaign-management split card shows the split name, placement date range, placement count and split status.
+- `BR-PLC-014` — A split card is expandable and reveals channels belonging to that split.
+- `BR-PLC-015` — Each channel shows its own status and can reveal the placements nested under that channel.
+
+Specific channel names, placement names, statuses, demographic distributions, relevance values, prices, budget numbers and date ranges shown in the prototype are mock fixture data unless separately defined as business rules.
