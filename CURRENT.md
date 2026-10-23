@@ -4,31 +4,34 @@ Prototype version: `0.1.0`
 
 ## Current area
 
-Global navigation and advertising campaign entry flow.
+Advertising campaign creation flow.
 
 ## Current task
 
-The top-level navigation now includes client context, and the advertising campaign section has an entry point to campaign creation.
+Campaign creation now has a defined first step with dependent platform and placement-format choices, plus Back/Next navigation.
 
 ## Last accepted state
 
 - Five top-level sections are defined: Рекламные кампании, Отчеты, Профиль и организации, Платежи и документы, Помощь.
-- Each section is represented by a large clickable menu item.
 - The navigation displays the current client's profile nickname and balance using mock data.
 - Рекламные кампании is the default landing section.
 - The Рекламные кампании page has a **Создать** button.
-- **Создать** opens a separate **Создание рекламной кампании** page.
-- The creation page currently contains only a placeholder; its fields and steps are not yet defined.
-- The campaign menu item remains active while viewing campaign creation.
-- Detailed internal structure of the other sections has not yet been designed.
+- **Создать** opens a multi-step **Создание рекламной кампании** flow.
+- Step 1 contains: Название, Формат контента, Платформа, Форматы размещения, Бюджет, Даты проведения.
+- Формат контента controls which platforms and placement formats are available.
+- Форматы размещения is a multi-select dropdown.
+- Даты проведения is represented by start/end calendar inputs.
+- **Далее** opens a placeholder step 2 because later steps are not yet defined.
+- **Назад** from step 2 returns to step 1 with the current mock form state preserved in the page session.
+- The campaign menu item remains active throughout campaign creation.
 - GitHub Pages publishes `prototype/` through `.github/workflows/pages.yml`.
 - Wireframe preview URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
 - Prototype changes on `main` deploy automatically; no manual Actions run is required.
 
 ## Read for current work
 
-- `rules/common.md`
 - `rules/campaigns.md`
+- `rules/formats.md`
 - `prototype/index.html`
 - `prototype/styles.css`
 - `prototype/app.js`
