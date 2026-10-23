@@ -1,26 +1,19 @@
 # Live Preview
 
-Expected URL: https://fvstanislav.github.io/PleiadaWireframe/
+Wireframe URL: https://fvstanislav.github.io/PleiadaWireframe/prototype/
 
-The live wireframe is published from `prototype/` by `.github/workflows/pages.yml`.
+GitHub Pages is enabled for this public repository and currently publishes the `main` branch through GitHub's built-in Pages build.
+
+The repository root is published as the Pages site root, so the clickable wireframe lives under `/prototype/`.
 
 ## Automatic publishing
 
-A deployment runs automatically when a commit to `main` changes:
+Commits to `main` are picked up by GitHub Pages automatically. No local software and no manual Actions run are required to review normal prototype changes.
 
-- `prototype/**`
-- `.github/workflows/pages.yml`
+For wireframe review, always open:
 
-The workflow uploads only the contents of `prototype/`, so repository documentation and business-rule files are not exposed as part of the site.
+`https://fvstanislav.github.io/PleiadaWireframe/prototype/`
 
-## One-time repository setting
+Do not use the repository Pages root as the prototype URL.
 
-GitHub Pages must be enabled once in the repository UI:
-
-1. Open `Settings`.
-2. Open `Pages`.
-3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
-
-After that, future prototype changes should deploy automatically. No local software or local copy of the repository is required to review the wireframe.
-
-If a deployment fails, inspect the GitHub Actions run before changing prototype code. A Pages configuration failure is not a prototype failure.
+If the preview is stale or unavailable, inspect GitHub's built-in `pages build and deployment` run before changing prototype code.

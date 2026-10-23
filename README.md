@@ -6,11 +6,11 @@ This repository is intentionally simple: static HTML/CSS/JS, mock data, and comp
 
 ## Live preview
 
-Expected URL: https://fvstanislav.github.io/PleiadaWireframe/
+Wireframe URL: https://fvstanislav.github.io/PleiadaWireframe/prototype/
 
-The `prototype/` folder is published automatically to GitHub Pages by `.github/workflows/pages.yml` when prototype files change on `main`. No local software is required to review the wireframe.
+GitHub Pages publishes `main` automatically through the built-in Pages deployment. No local software and no manual Actions run are required for normal wireframe review.
 
-See `PREVIEW.md` for the one-time Pages setting and deployment details.
+See `PREVIEW.md` for details.
 
 ## Structure
 
