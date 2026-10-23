@@ -8,7 +8,7 @@ Advertising campaign creation and management flow.
 
 ## Current task
 
-Campaign creation steps 1–4 are defined. After step 4 the wizard ends and opens a separate **Управление рекламной кампанией** page with expandable split/channel hierarchy.
+Campaign creation steps 1–4 are defined. After step 4 the wizard ends and opens a separate **Управление рекламной кампанией** page with expandable split/channel/placement hierarchy and an **Добавить сплит** action.
 
 ## Last accepted state
 
@@ -24,9 +24,12 @@ Campaign creation steps 1–4 are defined. After step 4 the wizard ends and open
 - Step 4 is **Загрузка креатива** with a visual-only drag-and-drop area and **Выбрать файл** button.
 - **Далее** from step 4 exits the wizard and opens **Управление рекламной кампанией**; there is no step 5 in the creation wizard.
 - The management page title is **Управление рекламной кампанией** and the current mock subtitle is **Рекламная кампани 1**.
+- The management page has an **Добавить сплит** button that opens the same step-by-step creation flow again from step 1.
 - The management page displays expandable split cards.
-- Current mock **Сплит 1** shows a date range, **Размещений: 5 шт.**, and status **В работе**.
-- Expanding **Сплит 1** shows **Канал 1** with status **Отменен** and nested **Размещение 1**, plus **Канал 2** with status **Заявка не отправлена** and nested **Размещение 2**.
+- Current mock **Сплит 1** shows a date range, **Размещений: 5 шт.**, budget **48 400 ₽**, and status **В работе**.
+- Expanding **Сплит 1** shows **Канал 1** with status **Отменен**, **1 размещение**, budget **14 800 ₽**; and **Канал 2** with status **Заявка не отправлена**, **1 размещение**, budget **22 400 ₽**.
+- Nested **Размещение 1** and **Размещение 2** show cost, status **Запланировано**, and a **Креатив** button.
+- **Креатив** opens an intentionally empty modal with a close control.
 - Only explicitly supplied nested placements are shown; the prototype does not invent additional placements to reconcile the split summary count.
 - The campaign menu item remains active throughout campaign creation and campaign management.
 - GitHub Pages publishes `prototype/` through `.github/workflows/pages.yml`.

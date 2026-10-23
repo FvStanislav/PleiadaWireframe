@@ -186,19 +186,28 @@ const mockData = {
         name: "Сплит 1",
         dateRange: "01.11.2026 — 30.11.2026",
         placementCount: 5,
+        budget: 48400,
         status: "В работе",
         channels: [
           {
             id: "management-channel-1",
             name: "Канал 1",
             status: "Отменен",
-            placements: ["Размещение 1"]
+            placementCount: 1,
+            budget: 14800,
+            placements: [
+              { id: "placement-1", name: "Размещение 1", price: 14800, status: "Запланировано" }
+            ]
           },
           {
             id: "management-channel-2",
             name: "Канал 2",
             status: "Заявка не отправлена",
-            placements: ["Размещение 2"]
+            placementCount: 1,
+            budget: 22400,
+            placements: [
+              { id: "placement-2", name: "Размещение 2", price: 22400, status: "Запланировано" }
+            ]
           }
         ]
       }

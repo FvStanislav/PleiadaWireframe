@@ -25,7 +25,8 @@
 ## Campaign management
 
 - `BR-CAM-020` — **Управление рекламной кампанией** displays the campaign name/subtitle and a list of campaign splits.
-- `BR-CAM-021` — Each split is represented by an expandable card showing split name, placement date range, placement count and current split status.
-- `BR-CAM-022` — Expanding a split reveals its channels; each channel shows its own status and can reveal its nested placements.
+- `BR-CAM-021` — Each split is represented by an expandable card showing split name, placement date range, placement count, budget and current split status.
+- `BR-CAM-022` — Expanding a split reveals its channels; each channel shows its own status, placement count and budget and can reveal its nested placements.
+- `BR-CAM-023` — The management page has an **Добавить сплит** action that opens the same multi-step creation flow again, starting from step 1.
 
 Steps 1–4 are the complete campaign-creation wizard currently defined. Campaign management begins after the wizard.

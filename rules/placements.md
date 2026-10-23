@@ -17,8 +17,11 @@
 
 ## Campaign management hierarchy
 
-- `BR-PLC-013` — A campaign-management split card shows the split name, placement date range, placement count and split status.
+- `BR-PLC-013` — A campaign-management split card shows the split name, placement date range, placement count, split budget and split status.
 - `BR-PLC-014` — A split card is expandable and reveals channels belonging to that split.
-- `BR-PLC-015` — Each channel shows its own status and can reveal the placements nested under that channel.
+- `BR-PLC-015` — Each channel shows its own status, placement count and budget and can reveal the placements nested under that channel.
+- `BR-PLC-016` — A nested placement shows its name, cost and status.
+- `BR-PLC-017` — The current placement status shown in the management wireframe is **Запланировано**.
+- `BR-PLC-018` — Each placement has a **Креатив** action. In the current wireframe it opens an empty modal that can be closed; creative content inside this modal is not yet defined.
 
 Specific channel names, placement names, statuses, demographic distributions, relevance values, prices, budget numbers and date ranges shown in the prototype are mock fixture data unless separately defined as business rules.
