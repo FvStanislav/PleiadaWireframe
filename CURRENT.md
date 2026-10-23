@@ -8,7 +8,7 @@ Advertising campaign creation and management flow.
 
 ## Current task
 
-Campaign creation steps 1–4 are defined. The **Рекламные кампании** list now contains a clickable existing campaign card that opens the separate management page with expandable split/channel/placement hierarchy.
+Campaign creation steps 1–4 are defined. The campaign management page now includes split/channel/placement hierarchy, an **Добавить сплит** action, and a separate **Креативы** library page.
 
 ## Last accepted state
 
@@ -27,13 +27,17 @@ Campaign creation steps 1–4 are defined. The **Рекламные кампан
 - **Далее** from step 4 exits the wizard and opens **Управление рекламной кампанией**; there is no step 5 in the creation wizard.
 - The management page title is **Управление рекламной кампанией** and the current mock subtitle is **Рекламная кампания 1**.
 - The management page has an **Добавить сплит** button that opens the same step-by-step creation flow again from step 1.
+- Next to **Добавить сплит**, the management page has a **Креативы** button.
+- **Креативы** opens a separate campaign creative-library page with mock media-file cards.
+- Creative-library cards show file name, media type, resolution, format and file size; video cards also show duration in seconds.
+- The creative-library page has a back action that returns to **Управление рекламной кампанией**.
 - The management page displays expandable split cards.
 - Current mock **Сплит 1** shows a date range, **Размещений: 5 шт.**, budget **48 400 ₽**, and status **В работе**.
 - Expanding **Сплит 1** shows **Канал 1** with status **Отменен**, **1 размещение**, budget **14 800 ₽**; and **Канал 2** with status **Заявка не отправлена**, **1 размещение**, budget **22 400 ₽**.
 - Nested **Размещение 1** and **Размещение 2** show cost, status **Запланировано**, and a **Креатив** button.
 - **Креатив** opens an intentionally empty modal with a close control.
 - Only explicitly supplied nested placements are shown; the prototype does not invent additional placements to reconcile the split summary count.
-- The campaign menu item remains active throughout campaign creation and campaign management.
+- The campaign menu item remains active throughout campaign creation, campaign management and the creative library.
 - GitHub Pages publishes `prototype/` through `.github/workflows/pages.yml`.
 - Wireframe preview URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
 - Prototype changes on `main` deploy automatically; no manual Actions run is required.
@@ -53,6 +57,7 @@ Campaign creation steps 1–4 are defined. The **Рекламные кампан
 - `prototype/split.js`
 - `prototype/management.css`
 - `prototype/management.js`
+- `prototype/creative-library.js`
 - `prototype/campaign-list.css`
 - `prototype/campaign-list.js`
 

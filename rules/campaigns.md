@@ -30,5 +30,6 @@
 - `BR-CAM-021` — Each split is represented by an expandable card showing split name, placement date range, placement count, budget and current split status.
 - `BR-CAM-022` — Expanding a split reveals its channels; each channel shows its own status, placement count and budget and can reveal its nested placements.
 - `BR-CAM-023` — The management page has an **Добавить сплит** action that opens the same multi-step creation flow again, starting from step 1.
+- `BR-CAM-026` — The management page has a **Креативы** action next to **Добавить сплит** that opens the campaign creative library defined in `rules/creatives.md`.
 
 Steps 1–4 are the complete campaign-creation wizard currently defined. Campaign management begins after the wizard.

@@ -86,7 +86,10 @@ function renderCampaignManagement() {
           <h1>${management.title}</h1>
           <p>${management.subtitle}</p>
         </div>
-        <button class="primary-button" id="add-split">Добавить сплит</button>
+        <div class="management-page-actions">
+          <button class="secondary-button" id="campaign-creatives">Креативы</button>
+          <button class="primary-button" id="add-split">Добавить сплит</button>
+        </div>
       </div>
 
       <div class="management-split-list">
@@ -104,6 +107,7 @@ function renderCampaignManagement() {
   `;
 
   document.querySelector("#management-back").addEventListener("click", () => render("campaigns"));
+  document.querySelector("#campaign-creatives").addEventListener("click", renderCampaignCreatives);
   document.querySelector("#add-split").addEventListener("click", () => render("campaign-create-step1"));
 
   document.querySelectorAll(".creative-open").forEach((button) => {
