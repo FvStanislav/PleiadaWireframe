@@ -16,7 +16,11 @@ function renderManagementPlacement(placement) {
           <span class="management-status ${managementStatusClass(placement.status)}">${placement.status}</span>
         </div>
       </div>
-      <button class="secondary-button creative-open" type="button" data-placement-id="${placement.id}">Креатив</button>
+      <div class="management-placement-actions">
+        <span class="moderation-ok" tabindex="0" data-tooltip="Креатив промодерирован" aria-label="Креатив промодерирован">✓</span>
+        <button class="secondary-button creative-open" type="button" data-placement-id="${placement.id}">Креатив</button>
+        <button class="danger-button cancel-action" type="button" data-cancel-target="${placement.name}">Отменить</button>
+      </div>
     </div>
   `;
 }
@@ -32,7 +36,11 @@ function renderManagementChannel(channel) {
             <span>Бюджет: ${formatNumber(channel.budget)} ₽</span>
           </div>
         </div>
-        <span class="management-status ${managementStatusClass(channel.status)}">${channel.status}</span>
+        <div class="management-summary-actions">
+          <span class="management-status ${managementStatusClass(channel.status)}">${channel.status}</span>
+          <button class="secondary-button contact-action" type="button" data-channel-name="${channel.name}">Связаться</button>
+          <button class="danger-button cancel-action" type="button" data-cancel-target="${channel.name}">Отменить</button>
+        </div>
       </summary>
       <div class="management-placement-list">
         ${channel.placements.map(renderManagementPlacement).join("")}
@@ -54,7 +62,10 @@ function renderManagementSplit(split) {
               <span>Бюджет: ${formatNumber(split.budget)} ₽</span>
             </div>
           </div>
-          <span class="management-status ${managementStatusClass(split.status)}">${split.status}</span>
+          <div class="management-summary-actions">
+            <span class="management-status ${managementStatusClass(split.status)}">${split.status}</span>
+            <button class="danger-button cancel-action" type="button" data-cancel-target="${split.name}">Отменить</button>
+          </div>
         </div>
       </summary>
       <div class="management-split-body">
@@ -74,6 +85,30 @@ function closeCreativeModal() {
   if (modal) modal.hidden = true;
 }
 
+function openCancelModal(target) {
+  const modal = document.querySelector("#cancel-modal");
+  const label = document.querySelector("#cancel-modal-target");
+  if (label) label.textContent = target;
+  if (modal) modal.hidden = false;
+}
+
+function closeCancelModal() {
+  const modal = document.querySelector("#cancel-modal");
+  if (modal) modal.hidden = true;
+}
+
+function openChatWidget(channelName) {
+  const widget = document.querySelector("#chat-widget");
+  const title = document.querySelector("#chat-widget-title");
+  if (title) title.textContent = channelName;
+  if (widget) widget.hidden = false;
+}
+
+function closeChatWidget() {
+  const widget = document.querySelector("#chat-widget");
+  if (widget) widget.hidden = true;
+}
+
 function renderCampaignManagement() {
   const management = mockData.campaignManagement;
 
@@ -86,8 +121,8 @@ function renderCampaignManagement() {
           <h1>${management.title}</h1>
           <p>${management.subtitle}</p>
         </div>
-        <div class="management-page-actions">
-          <button class="secondary-button" id="campaign-creatives">Креативы</button>
+        <div class="management-header-actions">
+          <button class="secondary-button" id="open-creatives">Креативы</button>
           <button class="primary-button" id="add-split">Добавить сплит</button>
         </div>
       </div>
@@ -104,11 +139,35 @@ function renderCampaignManagement() {
         <div class="creative-modal-empty"></div>
       </div>
     </div>
+
+    <div class="action-modal" id="cancel-modal" hidden>
+      <div class="action-modal-backdrop" data-close-cancel></div>
+      <div class="action-modal-dialog" role="dialog" aria-modal="true" aria-label="Отмена">
+        <button class="action-modal-close" type="button" aria-label="Закрыть" data-close-cancel>×</button>
+        <h2>Отмена</h2>
+        <p id="cancel-modal-target"></p>
+      </div>
+    </div>
+
+    <aside class="chat-widget" id="chat-widget" hidden aria-label="Чат">
+      <div class="chat-widget-header">
+        <div>
+          <span>Чат</span>
+          <strong id="chat-widget-title">Канал</strong>
+        </div>
+        <button class="chat-widget-close" type="button" aria-label="Закрыть чат" id="chat-widget-close">×</button>
+      </div>
+      <div class="chat-widget-body">
+        <div class="chat-placeholder"></div>
+        <div class="chat-placeholder short"></div>
+      </div>
+      <div class="chat-widget-input">Сообщение…</div>
+    </aside>
   `;
 
   document.querySelector("#management-back").addEventListener("click", () => render("campaigns"));
-  document.querySelector("#campaign-creatives").addEventListener("click", renderCampaignCreatives);
   document.querySelector("#add-split").addEventListener("click", () => render("campaign-create-step1"));
+  document.querySelector("#open-creatives").addEventListener("click", renderCampaignCreatives);
 
   document.querySelectorAll(".creative-open").forEach((button) => {
     button.addEventListener("click", openCreativeModal);
@@ -117,6 +176,28 @@ function renderCampaignManagement() {
   document.querySelectorAll("[data-close-creative]").forEach((element) => {
     element.addEventListener("click", closeCreativeModal);
   });
+
+  document.querySelectorAll(".cancel-action").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openCancelModal(button.dataset.cancelTarget);
+    });
+  });
+
+  document.querySelectorAll("[data-close-cancel]").forEach((element) => {
+    element.addEventListener("click", closeCancelModal);
+  });
+
+  document.querySelectorAll(".contact-action").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openChatWidget(button.dataset.channelName);
+    });
+  });
+
+  document.querySelector("#chat-widget-close").addEventListener("click", closeChatWidget);
 
   setActiveNav("campaigns");
 }

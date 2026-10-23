@@ -8,7 +8,7 @@ Advertising campaign creation and management flow.
 
 ## Current task
 
-Campaign creation steps 1–4 are defined. The campaign management page now includes split/channel/placement hierarchy, an **Добавить сплит** action, and a separate **Креативы** library page.
+Campaign creation steps 1–4 are defined. The campaign list and campaign management screens now include basic management actions, moderation indication, cancellation modals and a visual channel chat widget.
 
 ## Last accepted state
 
@@ -18,6 +18,7 @@ Campaign creation steps 1–4 are defined. The campaign management page now incl
 - The Рекламные кампании page has a **Создать** button.
 - The campaign list contains **Рекламная кампания 1** as a clickable card with date range, budget and status **В работе**.
 - Clicking the campaign card or its **Перейти** button opens the campaign management page.
+- The campaign card has a trash icon. It opens a closable deletion modal; no actual deletion is performed in the wireframe.
 - **Создать** opens a four-step **Создание рекламной кампании** wizard.
 - Step 1 is **Параметры РК** and contains: Название, Формат контента, Платформа, Форматы размещения, Дополнительные опции, Бюджет, Даты проведения.
 - Step 2 is **Подбор медиа** and contains: Тематика, Подписчиков, Просмотров на ролик, Охват, ER, ERR, География, Пол, Возраст.
@@ -28,14 +29,14 @@ Campaign creation steps 1–4 are defined. The campaign management page now incl
 - The management page title is **Управление рекламной кампанией** and the current mock subtitle is **Рекламная кампания 1**.
 - The management page has an **Добавить сплит** button that opens the same step-by-step creation flow again from step 1.
 - Next to **Добавить сплит**, the management page has a **Креативы** button.
-- **Креативы** opens a separate campaign creative-library page with mock media-file cards.
-- Creative-library cards show file name, media type, resolution, format and file size; video cards also show duration in seconds.
-- The creative-library page has a back action that returns to **Управление рекламной кампанией**.
+- **Креативы** opens a separate campaign creative-library page with mock media-file cards; its back action returns to campaign management.
 - The management page displays expandable split cards.
 - Current mock **Сплит 1** shows a date range, **Размещений: 5 шт.**, budget **48 400 ₽**, and status **В работе**.
 - Expanding **Сплит 1** shows **Канал 1** with status **Отменен**, **1 размещение**, budget **14 800 ₽**; and **Канал 2** with status **Заявка не отправлена**, **1 размещение**, budget **22 400 ₽**.
-- Nested **Размещение 1** and **Размещение 2** show cost, status **Запланировано**, and a **Креатив** button.
+- Nested **Размещение 1** and **Размещение 2** show cost, status **Запланировано**, a **Креатив** button and a green moderation check; hovering/focusing the check shows **Креатив промодерирован**.
 - **Креатив** opens an intentionally empty modal with a close control.
+- Split, channel and placement levels each have a pink-red **Отменить** action that opens a closable prototype modal without performing cancellation.
+- Each channel has a **Связаться** action that opens a visual chat widget on the right. Real messaging is not implemented.
 - Only explicitly supplied nested placements are shown; the prototype does not invent additional placements to reconcile the split summary count.
 - The campaign menu item remains active throughout campaign creation, campaign management and the creative library.
 - GitHub Pages publishes `prototype/` through `.github/workflows/pages.yml`.

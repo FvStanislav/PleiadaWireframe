@@ -23,6 +23,7 @@
 - `BR-CAM-019` — After step 4 the creation wizard ends and opens a separate **Управление рекламной кампанией** page; this page is not another wizard step.
 - `BR-CAM-024` — The campaign list displays campaigns as cards showing campaign name, date range, budget and current status.
 - `BR-CAM-025` — Clicking a campaign card or its **Перейти** action opens that campaign's **Управление рекламной кампанией** page.
+- `BR-CAM-027` — A campaign card has a trash/delete icon. In the current wireframe it opens a closable deletion modal and does not actually delete the campaign.
 
 ## Campaign management
 

@@ -23,5 +23,8 @@
 - `BR-PLC-016` — A nested placement shows its name, cost and status.
 - `BR-PLC-017` — The current placement status shown in the management wireframe is **Запланировано**.
 - `BR-PLC-018` — Each placement has a **Креатив** action. In the current wireframe it opens an empty modal that can be closed; creative content inside this modal is not yet defined.
+- `BR-PLC-019` — Next to **Креатив**, a placement can show a positive moderation indicator; hovering or focusing it displays **Креатив промодерирован**.
+- `BR-PLC-020` — Split, channel and placement levels each have a pink-red **Отменить** action. In the current wireframe it opens a closable modal and does not execute cancellation.
+- `BR-PLC-021` — Each channel has a **Связаться** action that opens a visual chat widget on the right side of the screen. The current wireframe does not implement real messaging.
 
 Specific channel names, placement names, statuses, demographic distributions, relevance values, prices, budget numbers and date ranges shown in the prototype are mock fixture data unless separately defined as business rules.
