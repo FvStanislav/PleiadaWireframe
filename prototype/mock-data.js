@@ -9,6 +9,11 @@ const mockData = {
         label: "Длинные видео",
         platforms: ["VK Video", "YouTube"],
         placements: [
+          "Видео рекламодателя",
+          "Нативный текст рекламодателя",
+          "Нативное объявление спонсора видео"
+        ],
+        additionalOptions: [
           "Конкурс (розыгрыш)",
           "Ссылка в описании",
           "Закрепленный комментарий",
@@ -19,6 +24,11 @@ const mockData = {
         label: "Short-form видео",
         platforms: ["VK Clips", "YouTube Shorts", "TikTok"],
         placements: [
+          "Баннер",
+          "Анимационный баннер",
+          "Half screen"
+        ],
+        additionalOptions: [
           "Описание",
           "Закрепленный комментарий",
           "Эксклюзивность категории"
@@ -28,6 +38,10 @@ const mockData = {
         label: "Посты",
         platforms: ["VK", "Telegram", "Max"],
         placements: [
+          "Пост",
+          "Репост"
+        ],
+        additionalOptions: [
           "Перманентный пост",
           "Эксклюзивность категории"
         ]
@@ -36,6 +50,12 @@ const mockData = {
         label: "Наружная реклама",
         platforms: ["Наружная реклама"],
         placements: [
+          "Биллборд",
+          "Сити",
+          "Пиллар",
+          "Цифровой экран"
+        ],
+        additionalOptions: [
           "Эксклюзивность категории"
         ]
       }

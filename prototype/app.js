@@ -29,6 +29,7 @@ const campaignDraft = {
   contentType: "",
   platform: "",
   placements: [],
+  additionalOptions: [],
   budget: "",
   dateFrom: "",
   dateTo: ""
@@ -78,26 +79,42 @@ function platformOptions() {
     .join("");
 }
 
-function placementOptions() {
+function multiSelectOptions(items, selected, emptyText) {
   if (!campaignDraft.contentType) {
-    return `<div class="multi-select-empty">Сначала выберите формат контента</div>`;
+    return `<div class="multi-select-empty">${emptyText}</div>`;
   }
 
-  return mockData.campaignCreation.contentTypes[campaignDraft.contentType].placements
-    .map((placement) => `
+  return items
+    .map((item) => `
       <label class="checkbox-row">
-        <input type="checkbox" value="${placement}" ${campaignDraft.placements.includes(placement) ? "checked" : ""}>
-        <span>${placement}</span>
+        <input type="checkbox" value="${item}" ${selected.includes(item) ? "checked" : ""}>
+        <span>${item}</span>
       </label>
     `)
     .join("");
 }
 
-function placementSummary() {
+function multiSelectSummary(selected, emptyText) {
   if (!campaignDraft.contentType) return "Сначала выберите формат контента";
-  if (!campaignDraft.placements.length) return "Выберите форматы размещения";
-  if (campaignDraft.placements.length === 1) return campaignDraft.placements[0];
-  return `Выбрано: ${campaignDraft.placements.length}`;
+  if (!selected.length) return emptyText;
+  if (selected.length === 1) return selected[0];
+  return `Выбрано: ${selected.length}`;
+}
+
+function placementOptions() {
+  const items = campaignDraft.contentType
+    ? mockData.campaignCreation.contentTypes[campaignDraft.contentType].placements
+    : [];
+
+  return multiSelectOptions(items, campaignDraft.placements, "Сначала выберите формат контента");
+}
+
+function additionalOptions() {
+  const items = campaignDraft.contentType
+    ? mockData.campaignCreation.contentTypes[campaignDraft.contentType].additionalOptions
+    : [];
+
+  return multiSelectOptions(items, campaignDraft.additionalOptions, "Сначала выберите формат контента");
 }
 
 function saveStep1Fields() {
@@ -112,6 +129,14 @@ function saveStep1Fields() {
   if (budget) campaignDraft.budget = budget.value;
   if (dateFrom) campaignDraft.dateFrom = dateFrom.value;
   if (dateTo) campaignDraft.dateTo = dateTo.value;
+}
+
+function syncMultiSelect(selector, target, summarySelector, emptyText) {
+  campaignDraft[target] = Array.from(
+    document.querySelectorAll(`${selector} input[type='checkbox']:checked`)
+  ).map((item) => item.value);
+
+  document.querySelector(summarySelector).textContent = multiSelectSummary(campaignDraft[target], emptyText);
 }
 
 function renderCampaignCreateStep1() {
@@ -163,9 +188,20 @@ function renderCampaignCreateStep1() {
       <div class="field">
         <label>Форматы размещения</label>
         <details class="multi-select" ${campaignDraft.contentType ? "" : "data-disabled"}>
-          <summary>${placementSummary()}</summary>
+          <summary id="placement-summary">${multiSelectSummary(campaignDraft.placements, "Выберите форматы размещения")}</summary>
           <div class="multi-select-menu" id="placement-options">
             ${placementOptions()}
+          </div>
+        </details>
+        <div class="field-hint">Можно выбрать несколько вариантов.</div>
+      </div>
+
+      <div class="field">
+        <label>Дополнительные опции</label>
+        <details class="multi-select" ${campaignDraft.contentType ? "" : "data-disabled"}>
+          <summary id="additional-options-summary">${multiSelectSummary(campaignDraft.additionalOptions, "Выберите дополнительные опции")}</summary>
+          <div class="multi-select-menu" id="additional-options">
+            ${additionalOptions()}
           </div>
         </details>
         <div class="field-hint">Можно выбрать несколько вариантов.</div>
@@ -208,6 +244,7 @@ function renderCampaignCreateStep1() {
     campaignDraft.contentType = event.target.value;
     campaignDraft.platform = "";
     campaignDraft.placements = [];
+    campaignDraft.additionalOptions = [];
     render("campaign-create-step1");
   });
 
@@ -217,18 +254,19 @@ function renderCampaignCreateStep1() {
 
   document.querySelectorAll("#placement-options input[type='checkbox']").forEach((checkbox) => {
     checkbox.addEventListener("change", () => {
-      campaignDraft.placements = Array.from(
-        document.querySelectorAll("#placement-options input[type='checkbox']:checked")
-      ).map((item) => item.value);
-
-      document.querySelector(".multi-select summary").textContent = placementSummary();
+      syncMultiSelect("#placement-options", "placements", "#placement-summary", "Выберите форматы размещения");
     });
   });
 
-  const multiSelect = document.querySelector(".multi-select[data-disabled]");
-  if (multiSelect) {
+  document.querySelectorAll("#additional-options input[type='checkbox']").forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      syncMultiSelect("#additional-options", "additionalOptions", "#additional-options-summary", "Выберите дополнительные опции");
+    });
+  });
+
+  document.querySelectorAll(".multi-select[data-disabled]").forEach((multiSelect) => {
     multiSelect.addEventListener("click", (event) => event.preventDefault());
-  }
+  });
 
   document.querySelector("#campaign-next").addEventListener("click", () => {
     saveStep1Fields();

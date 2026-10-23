@@ -8,7 +8,7 @@ Advertising campaign creation flow.
 
 ## Current task
 
-Campaign creation now has a defined first step with dependent platform and placement-format choices, plus Back/Next navigation.
+Campaign creation step 1 now separates placement formats from additional options. Both fields depend on the selected content format.
 
 ## Last accepted state
 
@@ -17,9 +17,10 @@ Campaign creation now has a defined first step with dependent platform and place
 - Рекламные кампании is the default landing section.
 - The Рекламные кампании page has a **Создать** button.
 - **Создать** opens a multi-step **Создание рекламной кампании** flow.
-- Step 1 contains: Название, Формат контента, Платформа, Форматы размещения, Бюджет, Даты проведения.
-- Формат контента controls which platforms and placement formats are available.
+- Step 1 contains: Название, Формат контента, Платформа, Форматы размещения, Дополнительные опции, Бюджет, Даты проведения.
+- Формат контента controls which platforms, placement formats and additional options are available.
 - Форматы размещения is a multi-select dropdown.
+- Дополнительные опции is a multi-select dropdown placed immediately after Форматы размещения.
 - Даты проведения is represented by start/end calendar inputs.
 - **Далее** opens a placeholder step 2 because later steps are not yet defined.
 - **Назад** from step 2 returns to step 1 with the current mock form state preserved in the page session.
