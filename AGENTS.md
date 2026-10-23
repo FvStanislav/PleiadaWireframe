@@ -52,11 +52,10 @@ Do not load the entire repository by default. Use the minimum context required f
 
 ## Live preview
 
-- GitHub Pages publishes the `main` branch through GitHub's built-in Pages deployment.
-- Wireframe URL: `https://fvstanislav.github.io/PleiadaWireframe/prototype/`.
-- Normal pushes to `main` are published automatically; no manual Actions run is required.
-- The Pages site root is not the wireframe. Review the `/prototype/` URL.
-- If deployment fails, inspect GitHub's built-in `pages build and deployment` run before changing prototype code.
+- `prototype/` is published by `.github/workflows/pages.yml` through GitHub Pages.
+- Wireframe URL: `https://fvstanislav.github.io/PleiadaWireframe/`.
+- Prototype changes on `main` deploy automatically; no manual Actions run is required.
+- If deployment fails, inspect `Deploy Pleiada wireframe to Pages` before changing prototype code.
 - See `PREVIEW.md` for deployment-specific details.
 
 ## Versions
