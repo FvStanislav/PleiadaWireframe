@@ -1,19 +1,17 @@
 # Live Preview
 
-Wireframe URL: https://fvstanislav.github.io/PleiadaWireframe/prototype/
+Wireframe URL: https://fvstanislav.github.io/PleiadaWireframe/
 
-GitHub Pages is enabled for this public repository and currently publishes the `main` branch through GitHub's built-in Pages build.
+GitHub Pages publishes the wireframe through the custom workflow `.github/workflows/pages.yml`.
 
-The repository root is published as the Pages site root, so the clickable wireframe lives under `/prototype/`.
+The workflow uploads only the contents of `prototype/`, so the prototype is served at the Pages site root.
 
 ## Automatic publishing
 
-Commits to `main` are picked up by GitHub Pages automatically. No local software and no manual Actions run are required to review normal prototype changes.
+Commits to `main` that change `prototype/**` automatically run the Pages workflow and publish the new wireframe. No local software and no manual Actions run are required for normal prototype updates.
 
-For wireframe review, always open:
+For wireframe review, open:
 
-`https://fvstanislav.github.io/PleiadaWireframe/prototype/`
+`https://fvstanislav.github.io/PleiadaWireframe/`
 
-Do not use the repository Pages root as the prototype URL.
-
-If the preview is stale or unavailable, inspect GitHub's built-in `pages build and deployment` run before changing prototype code.
+If the preview is stale or unavailable, inspect the `Deploy Pleiada wireframe to Pages` workflow before changing prototype code.
