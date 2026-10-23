@@ -8,7 +8,7 @@ Advertising campaign creation flow.
 
 ## Current task
 
-Campaign creation steps 1–3 are defined. Step 3 is **Сплит** with budget summary and recommended media cards.
+Campaign creation steps 1–3 are defined. Step 3 is **Сплит** with selected placements plus a searchable/sortable **Могут подойти** section.
 
 ## Last accepted state
 
@@ -21,11 +21,14 @@ Campaign creation steps 1–3 are defined. Step 3 is **Сплит** with budget 
 - Step 2 is **Подбор медиа** and contains: Тематика, Подписчиков, Просмотров на ролик, Охват, ER, ERR, География, Пол, Возраст.
 - Step 3 is **Сплит**.
 - Step 3 shows separate planned and preliminary budget values.
-- Recommended placements are displayed as cards under **Подобрали для вас размещения**.
-- The current mock card is **Канал 1** with subscribers, views, reach, ER, ERR, publications per month, gender ratio and an age-distribution mini chart.
-- A placement included in the split has green **Добавлено в сплит** state; clicking toggles it to black **Добавить в сплит**, and clicking again restores the included state.
+- **Подобрали для вас размещения** currently contains two mock channel cards that start in **Добавлено в сплит** state.
+- A media card shows subscribers, views, reach, ER, ERR, publications per month, gender ratio and an age-distribution mini chart.
+- The split toggle switches between green **Добавлено в сплит** and black **Добавить в сплит**.
+- **Могут подойти** contains three additional mock channel cards that start outside the split with **Добавить в сплит**.
+- **Могут подойти** has working name search and ordering by relevance, subscribers, views or price.
+- Step 2 filter matching is not calculated in the prototype; the suggested list is fixed mock data.
 - Split budget values do not currently recalculate when placement inclusion changes because no recalculation rule has been defined.
-- Mock demographic distribution values exist only to visualize the card and are not business rules.
+- Mock demographic distribution, relevance and price values exist only to visualize and sort the cards and are not business rules.
 - **Назад** from step 3 returns to step 2 with current in-session state preserved.
 - **Далее** from step 3 opens only a placeholder because later steps are not yet defined.
 - The campaign menu item remains active throughout campaign creation.

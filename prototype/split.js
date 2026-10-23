@@ -1,6 +1,14 @@
-const splitState = Object.fromEntries(
-  mockData.campaignCreation.split.placements.map((placement) => [placement.id, true])
-);
+const splitState = {
+  ...Object.fromEntries(
+    mockData.campaignCreation.split.placements.map((placement) => [placement.id, true])
+  ),
+  ...Object.fromEntries(
+    mockData.campaignCreation.split.suggestedPlacements.map((placement) => [placement.id, false])
+  )
+};
+
+let suggestedSearch = "";
+let suggestedSort = "relevance";
 
 const baseRenderCampaignCreateStep2 = renderCampaignCreateStep2;
 
@@ -90,6 +98,45 @@ function renderSplitPlacementCard(placement) {
   `;
 }
 
+function bindSplitToggleButtons(root = document) {
+  root.querySelectorAll(".split-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.placementId;
+      splitState[id] = !splitState[id];
+      button.classList.toggle("is-added", splitState[id]);
+      button.textContent = splitState[id] ? "Добавлено в сплит" : "Добавить в сплит";
+      button.setAttribute("aria-pressed", String(splitState[id]));
+    });
+  });
+}
+
+function getSuggestedPlacements() {
+  const split = mockData.campaignCreation.split;
+  const query = suggestedSearch.trim().toLowerCase();
+  const items = split.suggestedPlacements.filter((placement) =>
+    placement.name.toLowerCase().includes(query)
+  );
+
+  return items.sort((a, b) => {
+    if (suggestedSort === "subscribers") return b.subscribers - a.subscribers;
+    if (suggestedSort === "views") return b.views - a.views;
+    if (suggestedSort === "price") return a.price - b.price;
+    return b.relevance - a.relevance;
+  });
+}
+
+function renderSuggestedPlacements() {
+  const list = document.querySelector("#suggested-media-list");
+  if (!list) return;
+
+  const items = getSuggestedPlacements();
+  list.innerHTML = items.length
+    ? items.map(renderSplitPlacementCard).join("")
+    : `<div class="suggested-empty">По вашему запросу ничего не найдено.</div>`;
+
+  bindSplitToggleButtons(list);
+}
+
 renderCampaignCreateStep3 = function () {
   const split = mockData.campaignCreation.split;
 
@@ -139,6 +186,29 @@ renderCampaignCreateStep3 = function () {
       </div>
     </section>
 
+    <section class="split-section suggested-section">
+      <div class="split-section-header suggested-header">
+        <h2>Могут подойти:</h2>
+        <div class="suggested-controls">
+          <input
+            id="suggested-search"
+            class="suggested-search"
+            type="search"
+            value="${suggestedSearch}"
+            placeholder="Поиск по названию"
+            aria-label="Поиск по названию"
+          >
+          <select id="suggested-sort" class="suggested-sort" aria-label="Сортировка каналов">
+            <option value="relevance" ${suggestedSort === "relevance" ? "selected" : ""}>По релевантности</option>
+            <option value="subscribers" ${suggestedSort === "subscribers" ? "selected" : ""}>По подписчикам</option>
+            <option value="views" ${suggestedSort === "views" ? "selected" : ""}>По просмотрам</option>
+            <option value="price" ${suggestedSort === "price" ? "selected" : ""}>По цене</option>
+          </select>
+        </div>
+      </div>
+      <div class="media-card-list" id="suggested-media-list"></div>
+    </section>
+
     <div class="wizard-actions">
       <button class="secondary-button" id="campaign-back-step2">Назад</button>
       <button class="primary-button" id="campaign-next-step4">Далее</button>
@@ -149,14 +219,17 @@ renderCampaignCreateStep3 = function () {
   document.querySelector("#campaign-back-step2").addEventListener("click", () => render("campaign-create-step2"));
   document.querySelector("#campaign-next-step4").addEventListener("click", renderCampaignCreateStep4);
 
-  document.querySelectorAll(".split-toggle").forEach((button) => {
-    button.addEventListener("click", () => {
-      const id = button.dataset.placementId;
-      splitState[id] = !splitState[id];
-      button.classList.toggle("is-added", splitState[id]);
-      button.textContent = splitState[id] ? "Добавлено в сплит" : "Добавить в сплит";
-      button.setAttribute("aria-pressed", String(splitState[id]));
-    });
+  bindSplitToggleButtons(screen);
+  renderSuggestedPlacements();
+
+  document.querySelector("#suggested-search").addEventListener("input", (event) => {
+    suggestedSearch = event.target.value;
+    renderSuggestedPlacements();
+  });
+
+  document.querySelector("#suggested-sort").addEventListener("change", (event) => {
+    suggestedSort = event.target.value;
+    renderSuggestedPlacements();
   });
 };
 
