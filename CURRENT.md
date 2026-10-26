@@ -4,11 +4,11 @@ Prototype version: `0.1.0`
 
 ## Current area
 
-Advertiser and publisher workspace shell, with advertiser campaign creation/management flows already defined.
+Advertiser and publisher workspaces. Advertiser campaign creation/management is defined; publisher **Заявки** is now the first defined publisher workflow.
 
 ## Current task
 
-A separate publisher workspace is now available from a low-emphasis top-bar switch. Its top-level navigation is defined; individual publisher section contents remain placeholders until explicitly designed.
+Publisher **Заявки** now contains placement-request cards with working status filters, search and sorting by date or amount.
 
 ## Last accepted state
 
@@ -17,7 +17,12 @@ A separate publisher workspace is now available from a low-emphasis top-bar swit
 - Clicking **Кабинет паблишера** switches the prototype into a separate publisher workspace for media representatives.
 - Publisher navigation consists of: **Заявки**, **Календарь**, **Чаты**, **Управление каналами**, **Профиль**, **Платежи и документы**, **Помощь**.
 - Publisher mode opens on **Заявки** by default.
-- Publisher section pages currently contain neutral placeholders only; no publisher-specific workflows beyond navigation are defined yet.
+- **Заявки** contains three mock placement requests.
+- Each request shows channel, format, cost, publication date and status.
+- Publisher request statuses are **Новая**, **Ждет ответа** and **Согласовано**.
+- The requests screen has status filters, a search field and sorting by publication date or amount.
+- The current prototype search matches channel and format; date sorting is earliest first and amount sorting is highest first.
+- Other publisher sections remain neutral placeholders until their flows are explicitly defined.
 - In publisher mode, the top-bar switch reads **Кабинет рекламодателя** and returns to the advertiser workspace.
 - The navigation displays the current account nickname and balance using mock data.
 - Рекламные кампании remains the advertiser default landing section.
@@ -40,6 +45,7 @@ A separate publisher workspace is now available from a low-emphasis top-bar swit
 ## Read for current work
 
 - `rules/common.md`
+- `rules/publisher.md`
 - `rules/campaigns.md`
 - `rules/formats.md`
 - `rules/media.md`

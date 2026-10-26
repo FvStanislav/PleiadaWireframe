@@ -15,7 +15,9 @@ Pleiada currently has two separate interface workspaces: advertiser and publishe
 - `BR-COM-009` — **Кабинет паблишера** switches the prototype into a separate publisher workspace intended for media representatives.
 - `BR-COM-010` — The publisher workspace navigation consists of **Заявки**, **Календарь**, **Чаты**, **Управление каналами**, **Профиль**, **Платежи и документы**, **Помощь**.
 - `BR-COM-011` — The publisher workspace opens on **Заявки** by default.
-- `BR-COM-012` — In the current wireframe, publisher section contents are placeholders until their individual flows are explicitly defined.
+- `BR-COM-012` — **Заявки** is a defined publisher screen; the remaining publisher sections stay as placeholders until their individual flows are explicitly defined.
 - `BR-COM-013` — In publisher mode, the top-bar switch becomes **Кабинет рекламодателя** and returns to the advertiser workspace.
+
+Publisher request behavior is defined in `rules/publisher.md`.
 
 Prototype nickname, balance and placeholder content are mock data and are not product business rules.
