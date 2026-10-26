@@ -1,9 +1,16 @@
+let activeCampaignId = "campaign-1";
+
 function managementStatusClass(status) {
   if (status === "В работе") return "status-working";
   if (status === "Отменен") return "status-cancelled";
   if (status === "Заявка не отправлена") return "status-pending";
   if (status === "Запланировано") return "status-planned";
   return "status-neutral";
+}
+
+function getCampaignManagement(campaignId = activeCampaignId) {
+  const campaign = mockData.campaigns.find((item) => item.id === campaignId) || mockData.campaigns[0];
+  return campaign && mockData[campaign.managementKey] ? mockData[campaign.managementKey] : mockData.campaignManagement;
 }
 
 function renderManagementPlacement(placement) {
@@ -109,8 +116,9 @@ function closeChatWidget() {
   if (widget) widget.hidden = true;
 }
 
-function renderCampaignManagement() {
-  const management = mockData.campaignManagement;
+function renderCampaignManagement(campaignId = activeCampaignId) {
+  activeCampaignId = campaignId || "campaign-1";
+  const management = getCampaignManagement(activeCampaignId);
 
   screen.innerHTML = `
     <div class="management-page">

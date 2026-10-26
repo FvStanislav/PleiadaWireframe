@@ -68,13 +68,15 @@ function renderCreativeFileCard(file) {
 }
 
 function renderCampaignCreatives() {
+  const management = getCampaignManagement(activeCampaignId);
+
   screen.innerHTML = `
     <div class="creative-library-page">
       <button class="back-button" id="creative-library-back">← Управление рекламной кампанией</button>
 
       <div class="creative-library-header">
         <h1>Креативы</h1>
-        <p>${mockData.campaignManagement.subtitle}</p>
+        <p>${management.subtitle}</p>
       </div>
 
       <div class="creative-file-list">
@@ -83,6 +85,6 @@ function renderCampaignCreatives() {
     </div>
   `;
 
-  document.querySelector("#creative-library-back").addEventListener("click", renderCampaignManagement);
+  document.querySelector("#creative-library-back").addEventListener("click", () => renderCampaignManagement(activeCampaignId));
   setActiveNav("campaigns");
 }
