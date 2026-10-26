@@ -41,6 +41,82 @@ const publisherRequestState = {
   sort: "date"
 };
 
+const publisherCalendarDays = [
+  { date: "2026-11-02", weekday: "Пн", label: "2 ноя" },
+  { date: "2026-11-03", weekday: "Вт", label: "3 ноя" },
+  { date: "2026-11-04", weekday: "Ср", label: "4 ноя" },
+  { date: "2026-11-05", weekday: "Чт", label: "5 ноя" },
+  { date: "2026-11-06", weekday: "Пт", label: "6 ноя" },
+  { date: "2026-11-07", weekday: "Сб", label: "7 ноя" },
+  { date: "2026-11-08", weekday: "Вс", label: "8 ноя" }
+];
+
+const publisherCalendarSlots = ["09:00", "12:00", "15:00", "18:00", "21:00"];
+
+const publisherCalendarPlacements = [
+  {
+    id: "calendar-1",
+    channel: "Канал 1",
+    format: "Нативная интеграция",
+    date: "2026-11-02",
+    time: "12:00",
+    kind: "scheduled"
+  },
+  {
+    id: "calendar-2",
+    channel: "Канал 2",
+    format: "Упоминание товара",
+    date: "2026-11-03",
+    time: "18:00",
+    kind: "scheduled"
+  },
+  {
+    id: "calendar-3",
+    channel: "Канал 3",
+    format: "Спонсор ролика",
+    date: "2026-11-04",
+    time: "15:00",
+    kind: "scheduled"
+  },
+  {
+    id: "calendar-4",
+    channel: "Канал 1",
+    format: "Нативный текст",
+    date: "2026-11-06",
+    time: "09:00",
+    kind: "scheduled"
+  },
+  {
+    id: "calendar-5",
+    channel: "Канал 2",
+    format: "Нативная интеграция",
+    date: "2026-11-08",
+    time: "21:00",
+    kind: "scheduled"
+  },
+  {
+    id: "calendar-potential-1",
+    channel: "Канал 1",
+    format: "Нативная интеграция",
+    date: "2026-11-05",
+    time: "15:00",
+    kind: "potential"
+  },
+  {
+    id: "calendar-potential-2",
+    channel: "Канал 3",
+    format: "Обзор продукта",
+    date: "2026-11-07",
+    time: "12:00",
+    kind: "potential"
+  }
+];
+
+const publisherCalendarState = {
+  channels: ["Канал 1", "Канал 2", "Канал 3"],
+  mode: "all"
+};
+
 const workspaceSwitch = document.querySelector("#workspace-switch");
 const sidebar = document.querySelector(".sidebar");
 let publisherMode = false;
@@ -178,12 +254,132 @@ function renderPublisherRequests() {
   renderPublisherRequestsList();
 }
 
+function filteredPublisherCalendarPlacements() {
+  return publisherCalendarPlacements.filter((placement) => {
+    const channelMatches = publisherCalendarState.channels.includes(placement.channel);
+    const modeMatches = publisherCalendarState.mode === "all" || placement.kind === "scheduled";
+    return channelMatches && modeMatches;
+  });
+}
+
+function renderPublisherCalendarPlacement(placement) {
+  const potential = placement.kind === "potential";
+  return `
+    <article class="publisher-calendar-placement ${potential ? "potential" : "scheduled"}">
+      <span class="publisher-calendar-placement-time">${placement.time}</span>
+      <strong>${placement.channel}</strong>
+      <span>${placement.format}</span>
+      <small>${potential ? "Потенциальное" : "Запланировано"}</small>
+    </article>
+  `;
+}
+
+function publisherCalendarChannelSummary() {
+  if (publisherCalendarState.channels.length === 3) return "Все каналы";
+  if (!publisherCalendarState.channels.length) return "Каналы не выбраны";
+  if (publisherCalendarState.channels.length === 1) return publisherCalendarState.channels[0];
+  return `Каналов: ${publisherCalendarState.channels.length}`;
+}
+
+function renderPublisherCalendarGrid() {
+  const placements = filteredPublisherCalendarPlacements();
+
+  return `
+    <div class="publisher-calendar-scroll">
+      <div class="publisher-calendar-grid">
+        <div class="publisher-calendar-corner">Время</div>
+        ${publisherCalendarDays.map((day) => `
+          <div class="publisher-calendar-day-header">
+            <span>${day.weekday}</span>
+            <strong>${day.label}</strong>
+          </div>
+        `).join("")}
+
+        ${publisherCalendarSlots.map((slot) => `
+          <div class="publisher-calendar-time">${slot}</div>
+          ${publisherCalendarDays.map((day) => {
+            const slotPlacements = placements.filter((placement) => placement.date === day.date && placement.time === slot);
+            return `
+              <div class="publisher-calendar-slot" data-date="${day.date}" data-time="${slot}">
+                ${slotPlacements.map(renderPublisherCalendarPlacement).join("")}
+              </div>
+            `;
+          }).join("")}
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function renderPublisherCalendar() {
+  screen.innerHTML = `
+    <div class="page-header publisher-calendar-header">
+      <h1>Календарь</h1>
+      <p>Запланированные и потенциальные размещения по слотам.</p>
+    </div>
+
+    <div class="publisher-calendar-toolbar">
+      <details class="publisher-channel-filter">
+        <summary>${publisherCalendarChannelSummary()}</summary>
+        <div class="publisher-channel-filter-menu">
+          ${["Канал 1", "Канал 2", "Канал 3"].map((channel) => `
+            <label class="publisher-channel-option">
+              <input type="checkbox" value="${channel}" ${publisherCalendarState.channels.includes(channel) ? "checked" : ""}>
+              <span>${channel}</span>
+            </label>
+          `).join("")}
+        </div>
+      </details>
+
+      <div class="publisher-calendar-mode" aria-label="Фильтр размещений">
+        <button class="publisher-filter-button ${publisherCalendarState.mode === "scheduled" ? "active" : ""}" type="button" data-calendar-mode="scheduled">Запланированные</button>
+        <button class="publisher-filter-button ${publisherCalendarState.mode === "all" ? "active" : ""}" type="button" data-calendar-mode="all">Все размещения</button>
+      </div>
+    </div>
+
+    <div class="publisher-calendar-range-row">
+      <div>
+        <strong>2–8 ноября 2026</strong>
+        <span>Недельный вид</span>
+      </div>
+      <div class="publisher-calendar-legend">
+        <span><i class="publisher-calendar-legend-dot scheduled"></i>Запланировано</span>
+        <span><i class="publisher-calendar-legend-dot potential"></i>Потенциальное</span>
+      </div>
+    </div>
+
+    <div id="publisher-calendar-grid-root">
+      ${renderPublisherCalendarGrid()}
+    </div>
+  `;
+
+  document.querySelectorAll(".publisher-channel-option input").forEach((input) => {
+    input.addEventListener("change", () => {
+      publisherCalendarState.channels = Array.from(document.querySelectorAll(".publisher-channel-option input:checked"))
+        .map((item) => item.value);
+      renderPublisherCalendar();
+    });
+  });
+
+  document.querySelectorAll("[data-calendar-mode]").forEach((button) => {
+    button.addEventListener("click", () => {
+      publisherCalendarState.mode = button.dataset.calendarMode;
+      renderPublisherCalendar();
+    });
+  });
+}
+
 function renderPublisherScreen(key) {
   const section = publisherSections.find((item) => item.key === key) || publisherSections[0];
   renderPublisherSidebar(section.key);
 
   if (section.key === "requests") {
     renderPublisherRequests();
+    return;
+  }
+
+  if (section.key === "calendar") {
+    renderPublisherCalendar();
     return;
   }
 

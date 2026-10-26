@@ -4,11 +4,11 @@ Prototype version: `0.1.0`
 
 ## Current area
 
-Advertiser and publisher workspaces. Advertiser campaign creation/management is defined; publisher **Заявки** is now the first defined publisher workflow.
+Advertiser and publisher workspaces. Advertiser campaign creation/management is defined; publisher **Заявки** and **Календарь** are now defined workflows.
 
 ## Current task
 
-Publisher **Заявки** now contains placement-request cards with working status filters, search and sorting by date or amount.
+Publisher **Календарь** now shows a weekly slot grid with publication times, planned placements, grey potential placements from not-yet-processed requests, channel filtering and planned/all placement visibility filters.
 
 ## Last accepted state
 
@@ -22,6 +22,12 @@ Publisher **Заявки** now contains placement-request cards with working sta
 - Publisher request statuses are **Новая**, **Ждет ответа** and **Согласовано**.
 - The requests screen has status filters, a search field and sorting by publication date or amount.
 - The current prototype search matches channel and format; date sorting is earliest first and amount sorting is highest first.
+- **Календарь** is a weekly publication-slot view.
+- The current mock calendar shows the week **2–8 ноября 2026** with time slots **09:00**, **12:00**, **15:00**, **18:00**, **21:00**.
+- Planned placements are displayed in their assigned date/time slots.
+- Potential placements from requests that are not yet fully processed are displayed in grey with a dashed border.
+- The calendar can be filtered by channel using a multi-select channel control.
+- The calendar visibility control switches between **Запланированные** and **Все размещения**; the latter includes potential placements.
 - Other publisher sections remain neutral placeholders until their flows are explicitly defined.
 - In publisher mode, the top-bar switch reads **Кабинет рекламодателя** and returns to the advertiser workspace.
 - The navigation displays the current account nickname and balance using mock data.
