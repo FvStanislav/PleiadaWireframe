@@ -122,6 +122,14 @@ body[data-workspace="publisher"] .sidebar-title {
   border: 1px solid #dfe3ea;
   border-radius: 14px;
   background: #fff;
+  cursor: pointer;
+}
+
+.publisher-request-card:hover,
+.publisher-request-card:focus-within {
+  border-color: #aeb6c4;
+  box-shadow: 0 4px 16px rgba(31, 36, 48, 0.06);
+  outline: none;
 }
 
 .publisher-request-title-row {
@@ -194,6 +202,155 @@ body[data-workspace="publisher"] .sidebar-title {
   color: #687083;
 }
 
+.publisher-request-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #eceef2;
+}
+
+.publisher-open-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #687083;
+  font-size: 13px;
+  cursor: pointer;
+}
+.publisher-open-link:hover,
+.publisher-open-link:focus-visible {
+  color: #16181d;
+  text-decoration: underline;
+}
+
+.publisher-request-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.publisher-action-button {
+  padding: 8px 12px;
+  border: 1px solid #d9dde5;
+  border-radius: 9px;
+  background: #fff;
+  color: #16181d;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.publisher-action-button:hover { background: #f6f7f9; }
+.publisher-action-button.accept { background: #e9f7ef; border-color: #c8e6d4; color: #26744a; }
+.publisher-action-button.decline { background: #fff2f4; border-color: #f2d4da; color: #aa4658; }
+
+.publisher-inline-notice {
+  max-width: 1000px;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border: 1px solid #c8e6d4;
+  border-radius: 10px;
+  background: #e9f7ef;
+  color: #26744a;
+  font-size: 13px;
+}
+
+.publisher-detail-heading {
+  max-width: 1100px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.publisher-detail-grid {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 18px;
+  align-items: start;
+}
+
+.publisher-detail-main { display: grid; gap: 18px; min-width: 0; }
+.publisher-detail-section, .publisher-detail-aside { max-width: none; }
+.publisher-detail-section h2, .publisher-detail-aside h2 {
+  margin: 0 0 20px;
+  font-size: 18px;
+}
+
+.publisher-detail-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.publisher-detail-facts > div, .publisher-creative-info {
+  display: grid;
+  gap: 5px;
+}
+.publisher-detail-facts span, .publisher-creative-info span, .publisher-panel-hint {
+  color: #7a8291;
+  font-size: 13px;
+}
+.publisher-detail-facts strong { font-size: 15px; }
+
+.publisher-creative-card { display: flex; gap: 18px; align-items: center; }
+.publisher-creative-preview {
+  width: 164px;
+  height: 110px;
+  flex: 0 0 164px;
+  display: grid;
+  place-content: center;
+  gap: 5px;
+  border: 1px dashed #bfc5cf;
+  border-radius: 10px;
+  background: #f3f5f8;
+  color: #687083;
+  text-align: center;
+}
+.publisher-creative-preview > span { font-size: 28px; }
+.publisher-creative-preview small { font-size: 11px; }
+.publisher-creative-info strong { overflow-wrap: anywhere; }
+
+.publisher-detail-aside { display: grid; gap: 9px; }
+.publisher-detail-aside h2 { margin-bottom: 9px; }
+.publisher-detail-aside button { width: 100%; text-align: center; }
+.publisher-detail-aside [data-detail-action="decline"] { color: #aa4658; }
+.publisher-panel-hint { margin: 0; line-height: 1.5; }
+.publisher-sent-reply {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  background: #f7f8fa;
+}
+.publisher-sent-reply span { color: #7a8291; font-size: 12px; }
+.publisher-sent-reply p { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+#publisher-reply-form { display: grid; justify-items: start; gap: 12px; margin-top: 15px; }
+#publisher-reply-form textarea {
+  width: 100%;
+  min-height: 110px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid #d9dde5;
+  border-radius: 10px;
+  font: inherit;
+}
+.publisher-schedule-form { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin-top: 15px; }
+.publisher-schedule-form label { display: grid; gap: 6px; font-size: 13px; font-weight: 650; }
+.publisher-schedule-form input, .publisher-schedule-form select {
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid #d9dde5;
+  border-radius: 9px;
+  background: #fff;
+}
+#publisher-decline-confirm { margin-top: 15px; }
+
 .publisher-channel-filter {
   position: relative;
   min-width: 180px;
@@ -261,6 +418,23 @@ body[data-workspace="publisher"] .sidebar-title {
   gap: 18px;
   margin-bottom: 12px;
 }
+
+.publisher-calendar-week-nav { display: flex; gap: 6px; }
+.publisher-calendar-week-nav button { padding: 7px 12px; }
+.publisher-calendar-focus {
+  max-width: 1180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border: 1px solid #cfd5df;
+  border-radius: 10px;
+  background: #eef0f4;
+  font-size: 13px;
+}
+.publisher-calendar-focus button { padding: 8px 12px; white-space: nowrap; }
 
 .publisher-calendar-range-row > div:first-child {
   display: grid;
@@ -412,6 +586,11 @@ body[data-workspace="publisher"] .sidebar-title {
   color: #747b88;
 }
 
+.publisher-calendar-placement.focused {
+  outline: 2px solid #3f536f;
+  outline-offset: 2px;
+}
+
 .publisher-calendar-placement-time {
   font-size: 10px;
   font-weight: 800;
@@ -429,6 +608,9 @@ body[data-workspace="publisher"] .sidebar-title {
 }
 
 @media (max-width: 900px) {
+  .publisher-detail-grid { grid-template-columns: 1fr; }
+  .publisher-detail-aside { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .publisher-detail-aside h2 { grid-column: 1 / -1; }
   .publisher-request-toolbar,
   .publisher-calendar-toolbar,
   .publisher-calendar-range-row {
@@ -455,6 +637,9 @@ body[data-workspace="publisher"] .sidebar-title {
 }
 
 @media (max-width: 760px) {
+  .publisher-detail-facts { grid-template-columns: 1fr; }
+  .publisher-creative-card { align-items: flex-start; flex-direction: column; }
+  .publisher-calendar-focus { align-items: flex-start; flex-direction: column; }
   .workspace-switch {
     position: static;
     transform: none;
