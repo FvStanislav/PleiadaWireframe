@@ -1,0 +1,50 @@
+.topbar {
+  position: relative;
+}
+
+.workspace-switch {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 9px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #9aa1af;
+  font-size: 11px;
+  font-weight: 550;
+  opacity: 0.68;
+  cursor: pointer;
+}
+
+.workspace-switch:hover,
+.workspace-switch:focus-visible {
+  opacity: 1;
+  color: #687083;
+  background: #f6f7f9;
+  border-color: #eceef2;
+  outline: none;
+}
+
+.publisher-nav-item {
+  min-height: 52px;
+  justify-content: center;
+}
+
+.publisher-placeholder {
+  max-width: 900px;
+}
+
+body[data-workspace="publisher"] .sidebar-title {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 760px) {
+  .workspace-switch {
+    position: static;
+    transform: none;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+}
