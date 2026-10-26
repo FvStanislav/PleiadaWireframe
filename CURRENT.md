@@ -8,7 +8,7 @@ Advertising campaign creation and management flow.
 
 ## Current task
 
-Campaign creation steps 1–4 are defined. The campaign list now contains three mock campaigns, each opening its own management page with its own split data and the same management actions.
+Campaign creation steps 1–4 are defined. The campaign list now supports named campaign groups: **Рекламная кампания 2** and **Рекламная кампания 3** are grouped under **VK Диваны**, while **Рекламная кампания 1** remains standalone.
 
 ## Last accepted state
 
@@ -17,6 +17,8 @@ Campaign creation steps 1–4 are defined. The campaign list now contains three 
 - Рекламные кампании is the default landing section.
 - The Рекламные кампании page has a **Создать** button.
 - The campaign list contains **Рекламная кампания 1**, **Рекламная кампания 2** and **Рекламная кампания 3** as clickable cards with date range, budget and status.
+- **Рекламная кампания 1** is displayed as a standalone card.
+- **Рекламная кампания 2** and **Рекламная кампания 3** are displayed inside the named group **VK Диваны**.
 - Clicking any campaign card or its **Перейти** button opens that campaign's own management page and split data.
 - Every campaign card has a trash icon. It opens a closable deletion modal; no actual deletion is performed in the wireframe.
 - **Создать** opens a four-step **Создание рекламной кампании** wizard.

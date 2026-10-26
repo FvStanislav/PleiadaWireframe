@@ -24,6 +24,8 @@
 - `BR-CAM-024` — The campaign list displays campaigns as cards showing campaign name, date range, budget and current status.
 - `BR-CAM-025` — Clicking a campaign card or its **Перейти** action opens that campaign's **Управление рекламной кампанией** page.
 - `BR-CAM-027` — A campaign card has a trash/delete icon. In the current wireframe it opens a closable deletion modal and does not actually delete the campaign.
+- `BR-CAM-028` — Campaign cards may be grouped under a named campaign group in the main campaign list; campaigns without a group remain standalone cards.
+- `BR-CAM-029` — The current wireframe groups **Рекламная кампания 2** and **Рекламная кампания 3** under **VK Диваны**, while **Рекламная кампания 1** remains ungrouped.
 
 ## Campaign management
 

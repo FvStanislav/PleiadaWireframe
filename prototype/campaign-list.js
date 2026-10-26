@@ -81,7 +81,8 @@ mockData.campaigns = [
     dateRange: mockData.campaignManagement.splits[0].dateRange,
     budget: mockData.campaignManagement.splits[0].budget,
     status: mockData.campaignManagement.splits[0].status,
-    managementKey: "campaignManagement"
+    managementKey: "campaignManagement",
+    group: null
   },
   {
     id: "campaign-2",
@@ -89,7 +90,8 @@ mockData.campaigns = [
     dateRange: mockData.campaignManagement2.splits[0].dateRange,
     budget: mockData.campaignManagement2.splits[0].budget,
     status: mockData.campaignManagement2.splits[0].status,
-    managementKey: "campaignManagement2"
+    managementKey: "campaignManagement2",
+    group: "VK Диваны"
   },
   {
     id: "campaign-3",
@@ -97,7 +99,8 @@ mockData.campaigns = [
     dateRange: mockData.campaignManagement3.splits[0].dateRange,
     budget: mockData.campaignManagement3.splits[0].budget,
     status: mockData.campaignManagement3.splits[0].status,
-    managementKey: "campaignManagement3"
+    managementKey: "campaignManagement3",
+    group: "VK Диваны"
   }
 ];
 
@@ -149,7 +152,27 @@ function renderCampaignListCard(campaign) {
   `;
 }
 
+function renderCampaignGroup(groupName, campaigns) {
+  return `
+    <section class="campaign-group">
+      <div class="campaign-group-header">
+        <div>
+          <span class="campaign-group-label">Группа</span>
+          <h2>${groupName}</h2>
+        </div>
+        <span class="campaign-group-count">РК: ${campaigns.length}</span>
+      </div>
+      <div class="campaign-group-list">
+        ${campaigns.map(renderCampaignListCard).join("")}
+      </div>
+    </section>
+  `;
+}
+
 renderCampaigns = function () {
+  const ungroupedCampaigns = mockData.campaigns.filter((campaign) => !campaign.group);
+  const groupedCampaigns = mockData.campaigns.filter((campaign) => campaign.group === "VK Диваны");
+
   screen.innerHTML = `
     <div class="page-header-row">
       <div class="page-header">
@@ -160,7 +183,8 @@ renderCampaigns = function () {
     </div>
 
     <div class="campaign-list">
-      ${mockData.campaigns.map(renderCampaignListCard).join("")}
+      ${ungroupedCampaigns.map(renderCampaignListCard).join("")}
+      ${renderCampaignGroup("VK Диваны", groupedCampaigns)}
     </div>
 
     <div class="delete-campaign-modal" id="delete-campaign-modal" hidden>

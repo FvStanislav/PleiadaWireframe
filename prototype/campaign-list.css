@@ -1,7 +1,7 @@
 .campaign-list {
   max-width: 900px;
   display: grid;
-  gap: 14px;
+  gap: 18px;
 }
 
 .campaign-list-card {
@@ -59,6 +59,51 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.campaign-group {
+  padding: 18px;
+  border: 1px solid #cfd6e2;
+  border-radius: 16px;
+  background: #f7f8fa;
+}
+
+.campaign-group-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding: 0 2px;
+}
+
+.campaign-group-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #7a8292;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.campaign-group-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.campaign-group-count {
+  color: #687083;
+  font-size: 13px;
+}
+
+.campaign-group-list {
+  display: grid;
+  gap: 12px;
+}
+
+.campaign-group .campaign-list-card {
+  border-color: #d8dde6;
 }
 
 .campaign-delete-button {
@@ -138,7 +183,8 @@
 
 @media (max-width: 900px) {
   .campaign-list-card-main,
-  .campaign-list-card-actions {
+  .campaign-list-card-actions,
+  .campaign-group-header {
     flex-direction: column;
     align-items: stretch;
   }
