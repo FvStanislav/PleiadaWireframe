@@ -1,30 +1,76 @@
 let activeCampaignId = "campaign-1";
 
+const placementStatusOrder = ["Модерация", "Согласование", "Ждет публикации", "Опубликовано", "Отменено"];
+
 function managementStatusClass(status) {
+  if (status === "Черновик") return "status-draft";
+  if (status === "Модерация") return "status-moderation";
+  if (status === "Согласование") return "status-negotiation";
   if (status === "В работе") return "status-working";
-  if (status === "Отменен") return "status-cancelled";
-  if (status === "Заявка не отправлена") return "status-pending";
-  if (status === "Запланировано") return "status-planned";
+  if (status === "Ждет публикации") return "status-planned";
+  if (status === "Опубликовано" || status === "Завершен" || status === "Завершена") return "status-complete";
+  if (status === "Отменено" || status === "Отменен") return "status-cancelled";
   return "status-neutral";
 }
 
+function getCampaign(campaignId = activeCampaignId) {
+  return mockData.campaigns.find((item) => item.id === campaignId) || mockData.campaigns[0];
+}
+
 function getCampaignManagement(campaignId = activeCampaignId) {
-  const campaign = mockData.campaigns.find((item) => item.id === campaignId) || mockData.campaigns[0];
+  const campaign = getCampaign(campaignId);
   return campaign && mockData[campaign.managementKey] ? mockData[campaign.managementKey] : mockData.campaignManagement;
 }
 
+function splitPlacements(split) {
+  return split.channels.flatMap((channel) => channel.placements || []);
+}
+
+function renderSplitStatusTooltip(split) {
+  const placements = splitPlacements(split);
+  const activeStatuses = placements.filter((placement) => placement.status);
+
+  if (!activeStatuses.length) {
+    return `
+      <div class="split-status-tooltip" role="tooltip">
+        <strong>Статусы размещений</strong>
+        <span>Появятся после запуска сплита.</span>
+      </div>
+    `;
+  }
+
+  const counts = placementStatusOrder.map((status) => ({
+    status,
+    count: activeStatuses.filter((placement) => placement.status === status).length
+  })).filter((item) => item.count > 0);
+
+  return `
+    <div class="split-status-tooltip" role="tooltip">
+      <strong>Статусы размещений</strong>
+      ${counts.map((item) => `
+        <div class="split-status-tooltip-row">
+          <span>${item.status}</span>
+          <b>${item.count}</b>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderManagementPlacement(placement) {
+  const moderationPassed = placement.status && placement.status !== "Модерация";
+
   return `
     <div class="management-placement-row">
       <div class="management-placement-main">
         <strong>${placement.name}</strong>
         <div class="management-placement-meta">
           <span>Стоимость: ${formatNumber(placement.price)} ₽</span>
-          <span class="management-status ${managementStatusClass(placement.status)}">${placement.status}</span>
+          ${placement.status ? `<span class="management-status ${managementStatusClass(placement.status)}">${placement.status}</span>` : ""}
         </div>
       </div>
       <div class="management-placement-actions">
-        <span class="moderation-ok" tabindex="0" data-tooltip="Креатив промодерирован" aria-label="Креатив промодерирован">✓</span>
+        ${moderationPassed ? `<span class="moderation-ok" tabindex="0" data-tooltip="Креатив промодерирован" aria-label="Креатив промодерирован">✓</span>` : ""}
         <button class="secondary-button creative-open" type="button" data-placement-id="${placement.id}">Креатив</button>
         <button class="danger-button cancel-action" type="button" data-cancel-target="${placement.name}">Отменить</button>
       </div>
@@ -44,7 +90,6 @@ function renderManagementChannel(channel) {
           </div>
         </div>
         <div class="management-summary-actions">
-          <span class="management-status ${managementStatusClass(channel.status)}">${channel.status}</span>
           <button class="secondary-button contact-action" type="button" data-channel-name="${channel.name}">Связаться</button>
           <button class="danger-button cancel-action" type="button" data-cancel-target="${channel.name}">Отменить</button>
         </div>
@@ -70,7 +115,10 @@ function renderManagementSplit(split) {
             </div>
           </div>
           <div class="management-summary-actions">
-            <span class="management-status ${managementStatusClass(split.status)}">${split.status}</span>
+            <span class="split-status-wrap" tabindex="0">
+              <span class="management-status ${managementStatusClass(split.status)}">${split.status}</span>
+              ${renderSplitStatusTooltip(split)}
+            </span>
             <button class="danger-button cancel-action" type="button" data-cancel-target="${split.name}">Отменить</button>
           </div>
         </div>
@@ -118,6 +166,7 @@ function closeChatWidget() {
 
 function renderCampaignManagement(campaignId = activeCampaignId) {
   activeCampaignId = campaignId || "campaign-1";
+  const campaign = getCampaign(activeCampaignId);
   const management = getCampaignManagement(activeCampaignId);
 
   screen.innerHTML = `
@@ -126,7 +175,10 @@ function renderCampaignManagement(campaignId = activeCampaignId) {
 
       <div class="management-page-header-row">
         <div class="management-page-header">
-          <h1>${management.title}</h1>
+          <div class="management-title-row">
+            <h1>${management.title}</h1>
+            <span class="management-status ${managementStatusClass(campaign.status)}">${campaign.status}</span>
+          </div>
           <p>${management.subtitle}</p>
         </div>
         <div class="management-header-actions">

@@ -4,24 +4,37 @@ Prototype version: `0.1.0`
 
 ## Current area
 
-Publisher workspace: **Заявки** and **Календарь**. Advertiser flows remain available.
+Advertiser campaign lifecycle statuses and publisher **Заявки / Календарь** flows.
 
 ## Current task
 
-Request cards now open a detail view with main information, a mock creative, reply and scheduling controls, and a link to the relevant calendar week. Cards also have direct accept, decline and contact actions. Calendar weeks can be changed.
+Campaign, split and placement lifecycle statuses are now represented in the advertiser wireframe. Split status exposes a hover/focus breakdown of placement statuses inside that split.
 
 ## Last accepted state
 
-- Publisher navigation opens on **Заявки**; other publisher sections except **Календарь** remain placeholders.
-- Three mock requests have status filters, channel/format search and date/amount sorting.
-- The calendar has time slots, planned and potential placements, channel filtering and planned/all visibility modes.
-- The advertiser campaign list, creation wizard, management screen and creative library are present.
+- Campaign statuses are **Черновик**, **В работе**, **Завершена**.
+- Split statuses are **Черновик**, **Модерация**, **Согласование**, **В работе**, **Завершен**, **Отменен**.
+- Placement statuses are **Модерация**, **Согласование**, **Ждет публикации**, **Опубликовано**, **Отменено**.
+- Placement lifecycle statuses do not exist independently while the parent split is still **Черновик**.
+- A split can be **В работе** while placements inside it are simultaneously in different stages.
+- Hovering or focusing a split status shows the count of placements in each status inside that split.
+- Channels remain the visual grouping of placements but do not have an independent lifecycle status.
+- The advertiser campaign list still contains three mock campaigns; **Рекламная кампания 2** and **Рекламная кампания 3** remain grouped under **VK Диваны**.
+- Publisher navigation opens on **Заявки**; **Календарь** is also implemented.
+- Publisher requests have status filters, search, sorting, detail/actions and calendar linking.
+- The publisher calendar has weekly time slots, planned and potential placements, channel filtering and planned/all visibility modes.
 - GitHub Pages publishes `prototype/` at `https://fvstanislav.github.io/PleiadaWireframe/`.
 
 ## Read for current work
 
+- `rules/campaigns.md`
+- `rules/placements.md`
 - `rules/common.md`
 - `rules/publisher.md`
+- `prototype/campaign-list.js`
+- `prototype/management.js`
+- `prototype/management.css`
+- `prototype/mock-data.js`
 - `prototype/publisher.js`
 - `prototype/publisher.css`
 - `prototype/index.html`

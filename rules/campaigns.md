@@ -27,11 +27,17 @@
 - `BR-CAM-028` — Campaign cards may be grouped under a named campaign group in the main campaign list; campaigns without a group remain standalone cards.
 - `BR-CAM-029` — The current wireframe groups **Рекламная кампания 2** and **Рекламная кампания 3** under **VK Диваны**, while **Рекламная кампания 1** remains ungrouped.
 
+## Campaign lifecycle
+
+- `BR-CAM-030` — Advertising campaign statuses are **Черновик**, **В работе**, **Завершена**.
+- `BR-CAM-031` — The advertising campaign status describes the lifecycle of the campaign container and is intentionally less detailed than split and placement statuses.
+- `BR-CAM-032` — Different splits inside one campaign may be in different lifecycle stages at the same time while the campaign itself remains **В работе**.
+
 ## Campaign management
 
 - `BR-CAM-020` — **Управление рекламной кампанией** displays the campaign name/subtitle and a list of campaign splits.
 - `BR-CAM-021` — Each split is represented by an expandable card showing split name, placement date range, placement count, budget and current split status.
-- `BR-CAM-022` — Expanding a split reveals its channels; each channel shows its own status, placement count and budget and can reveal its nested placements.
+- `BR-CAM-022` — Expanding a split reveals its channels; each channel shows its placement count and budget and can reveal its nested placements.
 - `BR-CAM-023` — The management page has an **Добавить сплит** action that opens the same multi-step creation flow again, starting from step 1.
 - `BR-CAM-026` — The management page has a **Креативы** action next to **Добавить сплит** that opens the campaign creative library defined in `rules/creatives.md`.
 

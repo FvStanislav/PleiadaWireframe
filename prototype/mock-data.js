@@ -179,7 +179,7 @@ const mockData = {
   },
   campaignManagement: {
     title: "Управление рекламной кампанией",
-    subtitle: "Рекламная кампани 1",
+    subtitle: "Рекламная кампания 1",
     splits: [
       {
         id: "split-1",
@@ -192,21 +192,22 @@ const mockData = {
           {
             id: "management-channel-1",
             name: "Канал 1",
-            status: "Отменен",
-            placementCount: 1,
-            budget: 14800,
+            placementCount: 2,
+            budget: 20400,
             placements: [
-              { id: "placement-1", name: "Размещение 1", price: 14800, status: "Запланировано" }
+              { id: "placement-1", name: "Размещение 1", price: 14800, status: "Опубликовано" },
+              { id: "placement-3", name: "Размещение 3", price: 5600, status: "Отменено" }
             ]
           },
           {
             id: "management-channel-2",
             name: "Канал 2",
-            status: "Заявка не отправлена",
-            placementCount: 1,
-            budget: 22400,
+            placementCount: 3,
+            budget: 28000,
             placements: [
-              { id: "placement-2", name: "Размещение 2", price: 22400, status: "Запланировано" }
+              { id: "placement-2", name: "Размещение 2", price: 22400, status: "Ждет публикации" },
+              { id: "placement-4", name: "Размещение 4", price: 2800, status: "Согласование" },
+              { id: "placement-5", name: "Размещение 5", price: 2800, status: "Модерация" }
             ]
           }
         ]

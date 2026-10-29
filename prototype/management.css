@@ -14,8 +14,16 @@
   margin-bottom: 0;
 }
 
+.management-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .management-page-header h1 {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 32px;
 }
 
@@ -43,7 +51,7 @@
   border: 1px solid #dfe3ea;
   border-radius: 14px;
   background: #fff;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .management-split-card > summary,
@@ -116,19 +124,24 @@
   white-space: nowrap;
 }
 
+.status-draft {
+  background: #f1f2f4;
+  color: #666e7b;
+}
+
+.status-moderation {
+  background: #f0edff;
+  color: #6652a6;
+}
+
+.status-negotiation {
+  background: #fff4d8;
+  color: #8a6511;
+}
+
 .status-working {
   background: #e8f5ed;
   color: #13713d;
-}
-
-.status-cancelled {
-  background: #f2f3f5;
-  color: #626a78;
-}
-
-.status-pending {
-  background: #fff4d8;
-  color: #8a6511;
 }
 
 .status-planned {
@@ -136,9 +149,82 @@
   color: #315b9c;
 }
 
+.status-complete {
+  background: #def2e7;
+  color: #0f6536;
+}
+
+.status-cancelled {
+  background: #f2f3f5;
+  color: #626a78;
+}
+
 .status-neutral {
   background: #eef0f4;
   color: #5f6777;
+}
+
+.split-status-wrap {
+  position: relative;
+  display: inline-flex;
+  border-radius: 999px;
+  cursor: help;
+  outline: none;
+}
+
+.split-status-wrap:focus-visible {
+  box-shadow: 0 0 0 2px #cfd5df;
+}
+
+.split-status-tooltip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 9px);
+  z-index: 30;
+  width: 230px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: #16181d;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(20, 24, 32, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.split-status-tooltip strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.split-status-tooltip > span {
+  display: block;
+  color: #c7ccd5;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.split-status-tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+  color: #d9dde5;
+  font-size: 12px;
+}
+
+.split-status-tooltip-row b {
+  color: #fff;
+  font-size: 12px;
+}
+
+.split-status-wrap:hover .split-status-tooltip,
+.split-status-wrap:focus .split-status-tooltip {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .danger-button {
@@ -167,6 +253,7 @@
 .management-channel {
   margin-top: 12px;
   border-radius: 11px;
+  overflow: hidden;
 }
 
 .management-channel > summary {
@@ -413,5 +500,10 @@
 
   .management-channel > summary {
     align-items: flex-start;
+  }
+
+  .split-status-tooltip {
+    right: auto;
+    left: 0;
   }
 }

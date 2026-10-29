@@ -10,26 +10,24 @@ mockData.campaignManagement2 = {
       dateRange: "10.11.2026 — 10.12.2026",
       placementCount: 2,
       budget: 76200,
-      status: "В работе",
+      status: "Черновик",
       channels: [
         {
           id: "campaign-2-channel-1",
           name: "Канал 6",
-          status: "Заявка не отправлена",
           placementCount: 1,
           budget: 31800,
           placements: [
-            { id: "campaign-2-placement-1", name: "Размещение 1", price: 31800, status: "Запланировано" }
+            { id: "campaign-2-placement-1", name: "Размещение 1", price: 31800, status: null }
           ]
         },
         {
           id: "campaign-2-channel-2",
           name: "Канал 7",
-          status: "В работе",
           placementCount: 1,
           budget: 44400,
           placements: [
-            { id: "campaign-2-placement-2", name: "Размещение 2", price: 44400, status: "Запланировано" }
+            { id: "campaign-2-placement-2", name: "Размещение 2", price: 44400, status: null }
           ]
         }
       ]
@@ -47,26 +45,24 @@ mockData.campaignManagement3 = {
       dateRange: "01.12.2026 — 31.12.2026",
       placementCount: 2,
       budget: 113500,
-      status: "В работе",
+      status: "Завершен",
       channels: [
         {
           id: "campaign-3-channel-1",
           name: "Канал 8",
-          status: "В работе",
           placementCount: 1,
           budget: 68500,
           placements: [
-            { id: "campaign-3-placement-1", name: "Размещение 1", price: 68500, status: "Запланировано" }
+            { id: "campaign-3-placement-1", name: "Размещение 1", price: 68500, status: "Опубликовано" }
           ]
         },
         {
           id: "campaign-3-channel-2",
           name: "Канал 9",
-          status: "Заявка не отправлена",
           placementCount: 1,
           budget: 45000,
           placements: [
-            { id: "campaign-3-placement-2", name: "Размещение 2", price: 45000, status: "Запланировано" }
+            { id: "campaign-3-placement-2", name: "Размещение 2", price: 45000, status: "Отменено" }
           ]
         }
       ]
@@ -80,7 +76,7 @@ mockData.campaigns = [
     name: "Рекламная кампания 1",
     dateRange: mockData.campaignManagement.splits[0].dateRange,
     budget: mockData.campaignManagement.splits[0].budget,
-    status: mockData.campaignManagement.splits[0].status,
+    status: "В работе",
     managementKey: "campaignManagement",
     group: null
   },
@@ -89,7 +85,7 @@ mockData.campaigns = [
     name: "Рекламная кампания 2",
     dateRange: mockData.campaignManagement2.splits[0].dateRange,
     budget: mockData.campaignManagement2.splits[0].budget,
-    status: mockData.campaignManagement2.splits[0].status,
+    status: "Черновик",
     managementKey: "campaignManagement2",
     group: "VK Диваны"
   },
@@ -98,7 +94,7 @@ mockData.campaigns = [
     name: "Рекламная кампания 3",
     dateRange: mockData.campaignManagement3.splits[0].dateRange,
     budget: mockData.campaignManagement3.splits[0].budget,
-    status: mockData.campaignManagement3.splits[0].status,
+    status: "Завершена",
     managementKey: "campaignManagement3",
     group: "VK Диваны"
   }
