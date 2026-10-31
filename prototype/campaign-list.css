@@ -4,6 +4,33 @@
   gap: 18px;
 }
 
+.campaign-list-header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.campaign-trash-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.campaign-trash-button span {
+  min-width: 20px;
+  height: 20px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #eef0f4;
+  color: #5f6777;
+  font-size: 11px;
+  font-weight: 800;
+}
+
 .campaign-list-card {
   padding: 22px;
   border: 1px solid #dfe3ea;
@@ -27,6 +54,11 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 22px;
+}
+
+.campaign-list-card-content {
+  min-width: 0;
+  flex: 1;
 }
 
 .campaign-list-card-title {
@@ -53,6 +85,43 @@
 
 .campaign-list-card-meta strong {
   font-size: 14px;
+}
+
+.campaign-list-split-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #eceef2;
+}
+
+.campaign-list-split-label {
+  color: #687083;
+  font-size: 12px;
+}
+
+.campaign-list-split-label strong {
+  color: #16181d;
+}
+
+.campaign-list-split-statuses {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.campaign-split-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .campaign-list-card-actions {
@@ -106,6 +175,15 @@
   border-color: #d8dde6;
 }
 
+.campaign-group-empty {
+  padding: 18px;
+  border: 1px dashed #d5dae2;
+  border-radius: 11px;
+  color: #818898;
+  background: #fff;
+  font-size: 13px;
+}
+
 .campaign-delete-button {
   width: 40px;
   height: 40px;
@@ -127,11 +205,15 @@
   height: 20px;
 }
 
-.delete-campaign-modal[hidden] {
+.delete-campaign-modal[hidden],
+.campaign-trash-modal[hidden],
+.create-group-modal[hidden] {
   display: none;
 }
 
-.delete-campaign-modal {
+.delete-campaign-modal,
+.campaign-trash-modal,
+.create-group-modal {
   position: fixed;
   inset: 0;
   z-index: 55;
@@ -140,30 +222,53 @@
   padding: 24px;
 }
 
-.delete-campaign-backdrop {
+.delete-campaign-backdrop,
+.campaign-trash-backdrop,
+.create-group-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(20, 24, 32, 0.46);
 }
 
-.delete-campaign-dialog {
+.delete-campaign-dialog,
+.campaign-trash-dialog,
+.create-group-dialog {
   position: relative;
   z-index: 1;
-  width: min(520px, 100%);
-  min-height: 180px;
+  width: min(560px, 100%);
   padding: 28px;
   border-radius: 16px;
   background: #fff;
   box-shadow: 0 24px 60px rgba(20, 24, 32, 0.22);
 }
 
-.delete-campaign-dialog h2 {
+.delete-campaign-dialog {
+  min-height: 210px;
+}
+
+.delete-campaign-dialog h2,
+.campaign-trash-dialog h2,
+.create-group-dialog h2 {
   margin: 0 0 10px;
 }
 
-.delete-campaign-dialog p {
+.delete-campaign-dialog p,
+.campaign-trash-dialog > p {
   margin: 0;
   color: #687083;
+}
+
+.delete-campaign-hint {
+  margin-top: 8px !important;
+  font-size: 13px;
+}
+
+.delete-campaign-actions,
+.create-group-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
 }
 
 .delete-campaign-close {
@@ -181,12 +286,88 @@
   cursor: pointer;
 }
 
+.campaign-trash-dialog {
+  width: min(720px, 100%);
+}
+
+.campaign-trash-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.campaign-trash-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid #e0e4ea;
+  border-radius: 11px;
+  background: #fafbfc;
+}
+
+.campaign-trash-item > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.campaign-trash-item > div:first-child span {
+  color: #818898;
+  font-size: 12px;
+}
+
+.campaign-trash-item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.campaign-trash-empty {
+  padding: 24px;
+  border: 1px dashed #d5dae2;
+  border-radius: 11px;
+  text-align: center;
+  color: #818898;
+}
+
+.create-group-dialog {
+  display: grid;
+  gap: 12px;
+}
+
+.create-group-dialog label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.create-group-dialog input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #d9dde5;
+  border-radius: 10px;
+  color: #16181d;
+  background: #fff;
+}
+
+.create-group-dialog input:focus {
+  outline: 2px solid #cfd5df;
+  outline-offset: 1px;
+}
+
 @media (max-width: 900px) {
   .campaign-list-card-main,
   .campaign-list-card-actions,
-  .campaign-group-header {
+  .campaign-group-header,
+  .campaign-trash-item,
+  .campaign-trash-item-actions,
+  .campaign-list-header-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .campaign-list-header-actions {
+    width: 100%;
   }
 
   .campaign-delete-button {

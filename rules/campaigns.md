@@ -21,11 +21,16 @@
 - `BR-CAM-017` — Step 4 is **Загрузка креатива**. Its upload interface is defined in `rules/creatives.md`.
 - `BR-CAM-018` — **Назад** from step 4 returns to step 3.
 - `BR-CAM-019` — After step 4 the creation wizard ends and opens a separate **Управление рекламной кампанией** page; this page is not another wizard step.
-- `BR-CAM-024` — The campaign list displays campaigns as cards showing campaign name, date range, budget and current status.
+- `BR-CAM-024` — The campaign list displays campaigns as cards showing campaign name, date range, budget, campaign status, split count and the statuses of splits inside the campaign.
 - `BR-CAM-025` — Clicking a campaign card or its **Перейти** action opens that campaign's **Управление рекламной кампанией** page.
-- `BR-CAM-027` — A campaign card has a trash/delete icon. In the current wireframe it opens a closable deletion modal and does not actually delete the campaign.
+- `BR-CAM-027` — A campaign card has a trash/delete icon that moves the campaign into the campaign trash in the current prototype session.
 - `BR-CAM-028` — Campaign cards may be grouped under a named campaign group in the main campaign list; campaigns without a group remain standalone cards.
 - `BR-CAM-029` — The current wireframe groups **Рекламная кампания 2** and **Рекламная кампания 3** under **VK Диваны**, while **Рекламная кампания 1** remains ungrouped.
+- `BR-CAM-033` — The campaign list has a **Создать группу** action.
+- `BR-CAM-034` — In the current prototype, **Создать группу** creates a named campaign group in the current browser session; an empty group remains visible and can later contain campaigns.
+- `BR-CAM-035` — The campaign list has a **Корзина** action for campaigns that were removed from the main campaign list.
+- `BR-CAM-036` — A campaign in the trash can be restored to the campaign list.
+- `BR-CAM-037` — A campaign in the trash can also be deleted permanently; the current prototype performs these trash operations only in the current browser session.
 
 ## Campaign lifecycle
 
@@ -36,7 +41,7 @@
 ## Campaign management
 
 - `BR-CAM-020` — **Управление рекламной кампанией** displays the campaign name/subtitle and a list of campaign splits.
-- `BR-CAM-021` — Each split is represented by an expandable card showing split name, placement date range, placement count, budget and current split status.
+- `BR-CAM-021` — Each split is represented by an expandable card showing split name, placement date range, channel count, placement count, budget and current split status.
 - `BR-CAM-022` — Expanding a split reveals its channels; each channel shows its placement count and budget and can reveal its nested placements.
 - `BR-CAM-023` — The management page has an **Добавить сплит** action that opens the same multi-step creation flow again, starting from step 1.
 - `BR-CAM-026` — The management page has a **Креативы** action next to **Добавить сплит** that opens the campaign creative library defined in `rules/creatives.md`.

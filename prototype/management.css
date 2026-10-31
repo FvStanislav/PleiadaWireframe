@@ -484,6 +484,93 @@
   background: #f8f9fb;
 }
 
+.creative-library-page {
+  max-width: 980px;
+}
+
+.creative-library-header {
+  margin-bottom: 24px;
+}
+
+.creative-library-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.creative-library-header p {
+  margin: 0;
+  color: #687083;
+  font-size: 16px;
+}
+
+.creative-file-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.creative-file-card {
+  overflow: hidden;
+  border: 1px solid #dfe3ea;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.creative-file-preview {
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 7px;
+  border-bottom: 1px solid #e3e6eb;
+  background: #f0f2f5;
+  color: #687083;
+  text-align: center;
+}
+
+.creative-file-preview span {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.creative-file-preview strong {
+  color: #303644;
+  font-size: 18px;
+}
+
+.creative-file-body {
+  padding: 18px;
+}
+
+.creative-file-body h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.creative-file-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 18px;
+}
+
+.creative-file-meta > div {
+  display: grid;
+  gap: 4px;
+}
+
+.creative-file-meta span {
+  color: #818898;
+  font-size: 11px;
+}
+
+.creative-file-meta strong {
+  color: #303644;
+  font-size: 13px;
+}
+
 @media (max-width: 900px) {
   .management-page-header-row,
   .management-split-main,
@@ -505,5 +592,9 @@
   .split-status-tooltip {
     right: auto;
     left: 0;
+  }
+
+  .creative-file-list {
+    grid-template-columns: 1fr;
   }
 }

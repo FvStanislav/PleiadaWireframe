@@ -110,6 +110,7 @@ function renderManagementSplit(split) {
             <div class="management-split-name">${split.name}</div>
             <div class="management-split-meta">
               <span>${split.dateRange}</span>
+              <span>Каналов: ${split.channels.length} шт.</span>
               <span>Размещений: ${split.placementCount} шт.</span>
               <span>Бюджет: ${formatNumber(split.budget)} ₽</span>
             </div>

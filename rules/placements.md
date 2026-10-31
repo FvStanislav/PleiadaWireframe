@@ -17,7 +17,7 @@
 
 ## Campaign management hierarchy
 
-- `BR-PLC-013` — A campaign-management split card shows the split name, placement date range, placement count, split budget and split status.
+- `BR-PLC-013` — A campaign-management split card shows the split name, placement date range, channel count, placement count, split budget and split status.
 - `BR-PLC-014` — A split card is expandable and reveals channels belonging to that split.
 - `BR-PLC-015` — Each channel shows its placement count and budget and can reveal the placements nested under that channel. A channel does not have its own independent lifecycle status in the current model.
 - `BR-PLC-016` — A nested placement shows its name, cost and status when the placement lifecycle has started.
