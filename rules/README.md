@@ -7,6 +7,7 @@ Do not use this folder as a decision diary. Previous versions are recovered from
 ## Areas
 
 - `common.md` — product-wide rules that do not belong to one domain.
+- `chats.md` — counterpart-based conversations, general messages and placement-linked discussions.
 - `campaigns.md` — campaign creation, lifecycle and budget-facing UX rules.
 - `contracts.md` — contract grouping and contract-level behavior.
 - `placements.md` — individual placement behavior and states.

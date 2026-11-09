@@ -61,7 +61,7 @@ function renderManagementPlacement(placement) {
   const moderationPassed = placement.status && placement.status !== "Модерация";
 
   return `
-    <div class="management-placement-row">
+    <div class="management-placement-row" data-placement-row-id="${placement.id}">
       <div class="management-placement-main">
         <strong>${placement.name}</strong>
         <div class="management-placement-meta">
@@ -71,6 +71,7 @@ function renderManagementPlacement(placement) {
       </div>
       <div class="management-placement-actions">
         ${moderationPassed ? `<span class="moderation-ok" tabindex="0" data-tooltip="Креатив промодерирован" aria-label="Креатив промодерирован">✓</span>` : ""}
+        <button class="secondary-button placement-chat-action" type="button" data-placement-id="${placement.id}">Чат</button>
         <button class="secondary-button creative-open" type="button" data-placement-id="${placement.id}">Креатив</button>
         <button class="danger-button cancel-action" type="button" data-cancel-target="${placement.name}">Отменить</button>
       </div>
@@ -90,7 +91,7 @@ function renderManagementChannel(channel) {
           </div>
         </div>
         <div class="management-summary-actions">
-          <button class="secondary-button contact-action" type="button" data-channel-name="${channel.name}">Связаться</button>
+          <button class="secondary-button contact-action" type="button" data-channel-id="${channel.id}">Связаться</button>
           <button class="danger-button cancel-action" type="button" data-cancel-target="${channel.name}">Отменить</button>
         </div>
       </summary>
@@ -153,18 +154,6 @@ function closeCancelModal() {
   if (modal) modal.hidden = true;
 }
 
-function openChatWidget(channelName) {
-  const widget = document.querySelector("#chat-widget");
-  const title = document.querySelector("#chat-widget-title");
-  if (title) title.textContent = channelName;
-  if (widget) widget.hidden = false;
-}
-
-function closeChatWidget() {
-  const widget = document.querySelector("#chat-widget");
-  if (widget) widget.hidden = true;
-}
-
 function renderCampaignManagement(campaignId = activeCampaignId) {
   activeCampaignId = campaignId || "campaign-1";
   const campaign = getCampaign(activeCampaignId);
@@ -210,25 +199,15 @@ function renderCampaignManagement(campaignId = activeCampaignId) {
       </div>
     </div>
 
-    <aside class="chat-widget" id="chat-widget" hidden aria-label="Чат">
-      <div class="chat-widget-header">
-        <div>
-          <span>Чат</span>
-          <strong id="chat-widget-title">Канал</strong>
-        </div>
-        <button class="chat-widget-close" type="button" aria-label="Закрыть чат" id="chat-widget-close">×</button>
-      </div>
-      <div class="chat-widget-body">
-        <div class="chat-placeholder"></div>
-        <div class="chat-placeholder short"></div>
-      </div>
-      <div class="chat-widget-input">Сообщение…</div>
-    </aside>
   `;
 
   document.querySelector("#management-back").addEventListener("click", () => render("campaigns"));
   document.querySelector("#add-split").addEventListener("click", () => render("campaign-create-step1"));
   document.querySelector("#open-creatives").addEventListener("click", renderCampaignCreatives);
+
+  document.querySelectorAll(".placement-chat-action").forEach((button) => {
+    button.addEventListener("click", () => openMiniChatForPlacement(button.dataset.placementId));
+  });
 
   document.querySelectorAll(".creative-open").forEach((button) => {
     button.addEventListener("click", openCreativeModal);
@@ -254,11 +233,10 @@ function renderCampaignManagement(campaignId = activeCampaignId) {
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      openChatWidget(button.dataset.channelName);
+      openMiniChatForChannel(button.dataset.channelId);
     });
   });
 
-  document.querySelector("#chat-widget-close").addEventListener("click", closeChatWidget);
 
   setActiveNav("campaigns");
 }

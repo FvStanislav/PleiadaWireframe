@@ -4,51 +4,39 @@ Prototype version: `0.1.0`
 
 ## Current area
 
-Advertiser campaign list/management and publisher **Заявки / Календарь** flows.
+Advertiser and publisher workspaces: shared counterpart-based chats and placement discussions.
 
 ## Current task
 
-Campaign-list usability was expanded: campaign groups can be created in-session, campaign cards show split count/statuses, deleted campaigns move to a recoverable trash, creative-library styling is restored, and split cards show channel count.
+Both workspaces now have a **Чаты** section organized by counterpart organizations. Each counterpart has a general chat and an expandable list of placement-specific discussions. Mini-chats from advertiser placements and publisher requests open the corresponding conversation and share their messages with the full chat section.
 
 ## Last accepted state
 
-- Campaign statuses are **Черновик**, **В работе**, **Завершена**.
-- Split statuses are **Черновик**, **Модерация**, **Согласование**, **В работе**, **Завершен**, **Отменен**.
-- Placement statuses are **Модерация**, **Согласование**, **Ждет публикации**, **Опубликовано**, **Отменено**.
-- Placement lifecycle statuses do not exist independently while the parent split is still **Черновик**.
-- A split can be **В работе** while placements inside it are simultaneously in different stages.
-- Hovering or focusing a split status shows the count of placements in each status inside that split.
-- Split cards show both channel count and placement count.
-- Channels remain the visual grouping of placements but do not have an independent lifecycle status.
-- Campaign cards show campaign status plus the number and status breakdown of splits inside the campaign.
-- The campaign list has a **Создать группу** action. In the current prototype, new named groups are created in the current browser session and may remain empty.
-- Deleting a campaign moves it to **Корзина** in the current browser session instead of immediately removing it permanently.
-- The campaign trash allows **Восстановить** and **Удалить навсегда** actions.
-- The advertiser campaign list still starts with three mock campaigns; **Рекламная кампания 2** and **Рекламная кампания 3** start grouped under **VK Диваны**.
-- The campaign creative library is rendered as styled media-file cards again; the existing mock creative metadata remains unchanged.
-- Publisher navigation opens on **Заявки**; **Календарь** is also implemented.
-- Publisher requests have status filters, search, sorting, detail/actions and calendar linking.
-- The publisher calendar has weekly time slots, planned and potential placements, channel filtering and planned/all visibility modes.
+- Advertiser navigation includes **Чаты**. Publisher **Чаты** is implemented instead of a placeholder.
+- In each workspace, the main chat list is grouped by counterparty; each counterparty exposes **Общий чат** and placement-linked discussions.
+- General conversations are not tied to a placement. Placement threads identify their channel, campaign/source, split, cost and status.
+- Every placement in advertiser campaign management has a **Чат** control. The channel **Связаться** action opens the responsible organization's general conversation.
+- Publisher request **Связаться** and **Чат по размещению** open a mini-chat for that request.
+- Mini-chat and full chat share in-session message data. Both workspaces can view the same sample bilateral conversations.
+- Switching from publisher back to advertiser no longer reloads the page, preserving current-session chat messages.
+- This is a mock interactive wireframe: no networked messaging, backend, authentication or persistent message storage.
+- Existing campaign/group/trash/creative-library, placement status, publisher request and calendar flows remain.
 - GitHub Pages publishes `prototype/` at `https://fvstanislav.github.io/PleiadaWireframe/`.
 
 ## Read for current work
 
-- `rules/campaigns.md`
-- `rules/placements.md`
-- `rules/creatives.md`
+- `rules/chats.md`
 - `rules/common.md`
+- `rules/placements.md`
 - `rules/publisher.md`
-- `prototype/campaign-list.js`
-- `prototype/campaign-list.css`
+- `prototype/chats.js`
+- `prototype/chats.css`
 - `prototype/management.js`
-- `prototype/management.css`
-- `prototype/creative-library.js`
-- `prototype/mock-data.js`
 - `prototype/publisher.js`
-- `prototype/publisher.css`
+- `prototype/app.js`
 - `prototype/index.html`
 
-Read additional rules and prototype files only for the next affected screen. `PREVIEW.md` is for deployment issues.
+Read other files only as required. `PREVIEW.md` is for deployment issues.
 
 ## Prototype entry
 

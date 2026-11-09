@@ -154,6 +154,7 @@ const publisherCalendarState = {
 
 const workspaceSwitch = document.querySelector("#workspace-switch");
 const sidebar = document.querySelector(".sidebar");
+const advertiserSidebarNodes = Array.from(sidebar.childNodes);
 let publisherMode = false;
 
 function renderPublisherSidebar(activeKey) {
@@ -309,6 +310,8 @@ function publisherRequestAction(requestId, action) {
     renderPublisherRequests();
   } else if (action === "decline") {
     renderPublisherRequestDetail(requestId, "decline");
+  } else if (action === "contact") {
+    openMiniChatForRequest(requestId);
   } else {
     renderPublisherRequestDetail(requestId, "reply");
   }
@@ -361,6 +364,7 @@ function renderPublisherRequestDetail(requestId, panel = "") {
         <h2>Действия</h2>
         <button class="primary-button" type="button" data-detail-action="accept">Принять</button>
         <button class="secondary-button" type="button" data-detail-action="reply">Ответить</button>
+        <button class="secondary-button" type="button" data-detail-action="chat">Чат по размещению</button>
         <button class="secondary-button" type="button" data-detail-action="schedule">Запланировать</button>
         <button class="secondary-button" type="button" data-detail-action="calendar">Сверить с календарем</button>
         <button class="secondary-button" type="button" data-detail-action="decline">Отказаться</button>
@@ -375,6 +379,8 @@ function renderPublisherRequestDetail(requestId, panel = "") {
         request.status = "Согласовано";
         request.actionNote = "Заявка принята";
         renderPublisherRequestDetail(requestId, "accepted");
+      } else if (action === "chat") {
+        openMiniChatForRequest(requestId);
       } else if (action === "calendar") {
         publisherCalendarWeek = publisherWeekStart(request.publicationDate);
         publisherCalendarState.channels = [request.channel];
@@ -651,6 +657,11 @@ function renderPublisherScreen(key) {
     return;
   }
 
+  if (section.key === "chats") {
+    renderChatsWorkspace("publisher");
+    return;
+  }
+
   screen.innerHTML = `
     <div class="page-header">
       <h1>${section.title}</h1>
@@ -665,6 +676,7 @@ function renderPublisherScreen(key) {
 }
 
 function enterPublisherWorkspace() {
+  closeChatMini();
   publisherMode = true;
   document.body.dataset.workspace = "publisher";
   workspaceSwitch.textContent = "Кабинет рекламодателя";
@@ -673,7 +685,12 @@ function enterPublisherWorkspace() {
 
 workspaceSwitch.addEventListener("click", () => {
   if (publisherMode) {
-    window.location.reload();
+    closeChatMini();
+    publisherMode = false;
+    document.body.removeAttribute("data-workspace");
+    workspaceSwitch.textContent = "Кабинет паблишера";
+    sidebar.replaceChildren(...advertiserSidebarNodes);
+    render("campaigns");
     return;
   }
 

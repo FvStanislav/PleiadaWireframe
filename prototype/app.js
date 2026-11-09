@@ -7,6 +7,10 @@ const screens = {
     title: "Отчеты",
     text: "Раздел для формирования кастомных отчетов."
   },
+  chats: {
+    title: "Чаты",
+    text: "Диалоги с контрагентами и обсуждения размещений."
+  },
   profile: {
     title: "Профиль и организации",
     text: "Управление личными данными и данными юридических лиц."
@@ -555,6 +559,8 @@ function renderPlaceholder(current) {
 function render(name) {
   if (name === "campaigns") {
     renderCampaigns();
+  } else if (name === "chats") {
+    renderChatsWorkspace("advertiser");
   } else if (name === "campaign-create-step1") {
     renderCampaignCreateStep1();
   } else if (name === "campaign-create-step2") {

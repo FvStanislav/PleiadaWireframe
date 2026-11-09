@@ -24,7 +24,9 @@
 - `BR-PLC-018` — Each placement has a **Креатив** action. In the current wireframe it opens an empty modal that can be closed; creative content inside this modal is not yet defined.
 - `BR-PLC-019` — Next to **Креатив**, a placement can show a positive moderation indicator; hovering or focusing it displays **Креатив промодерирован**.
 - `BR-PLC-020` — Split, channel and placement levels each have a pink-red **Отменить** action. In the current wireframe it opens a closable modal and does not execute cancellation.
-- `BR-PLC-021` — Each channel has a **Связаться** action that opens a visual chat widget on the right side of the screen. The current wireframe does not implement real messaging.
+- `BR-PLC-021` — Each channel has a **Связаться** action that opens the compact general conversation with the organization responsible for the channel.
+
+- `BR-PLC-028` — Each placement in campaign management has a **Чат** action that opens its own compact discussion, linked to the same counterpart and conversation as the full **Чаты** section.
 
 ## Split and placement lifecycle
 

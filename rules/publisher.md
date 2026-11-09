@@ -12,7 +12,9 @@
 - `BR-PUB-016` — A request card opens a separate request detail view.
 - `BR-PUB-017` — The detail view shows the request's main information and creative, and provides actions to answer, schedule and check the placement against the calendar.
 - `BR-PUB-018` — Each request card provides direct **Принять**, **Отказаться** and **Связаться** actions.
-- `BR-PUB-019` — In the current prototype, **Связаться** opens the request's reply form; sending a reply and declining show visual confirmation only. **Принять** changes the mock request to the existing **Согласовано** status. Scheduling places the request in a calendar slot in the current browser session.
+- `BR-PUB-019` — In the current prototype, **Связаться** opens the request's placement-linked mini-chat; the separate **Ответить** action still opens its reply form. Sending a reply and declining show visual confirmation only. **Принять** changes the mock request to the existing **Согласовано** status. Scheduling places the request in a calendar slot in the current browser session.
+
+- `BR-PUB-021` — The request detail screen also offers **Чат по размещению**, opening the same placement-linked mini-chat as the request-card **Связаться** action.
 
 ## Publication calendar
 
