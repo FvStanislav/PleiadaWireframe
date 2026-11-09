@@ -1,4 +1,5 @@
 const publisherSections = [
+  { key: "statistics", title: "Статистика" },
   { key: "requests", title: "Заявки" },
   { key: "calendar", title: "Календарь" },
   { key: "chats", title: "Чаты" },
@@ -646,6 +647,11 @@ function renderPublisherCalendar() {
 function renderPublisherScreen(key) {
   const section = publisherSections.find((item) => item.key === key) || publisherSections[0];
   renderPublisherSidebar(section.key);
+
+  if (section.key === "statistics") {
+    screen.innerHTML = '<div class="page-header"><h1>Статистика</h1></div>';
+    return;
+  }
 
   if (section.key === "requests") {
     renderPublisherRequests();

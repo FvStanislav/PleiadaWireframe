@@ -1,4 +1,8 @@
 const screens = {
+  statistics: {
+    title: "Статистика",
+    text: ""
+  },
   campaigns: {
     title: "Рекламные кампании",
     text: "Основной список рекламных кампаний."
@@ -557,7 +561,9 @@ function renderPlaceholder(current) {
 }
 
 function render(name) {
-  if (name === "campaigns") {
+  if (name === "statistics") {
+    screen.innerHTML = '<div class="page-header"><h1>Статистика</h1></div>';
+  } else if (name === "campaigns") {
     renderCampaigns();
   } else if (name === "chats") {
     renderChatsWorkspace("advertiser");
